@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
-const basePath = process.env.NODE_ENV === "production" ? "/regenerator" : ""
+// 独自ドメイン（https://gen.reload.co.jp）のルートで公開するため basePath は使わない
+const basePath = ""
 
 const nextConfig = {
   output: "export",

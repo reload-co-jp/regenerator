@@ -39,7 +39,7 @@ pnpm build      # 静的サイトを out/ に出力
 
 ```bash
 pnpm thumbnails                      # 既定: http://localhost:3000
-BASE_URL=http://localhost:4000/regenerator pnpm thumbnails
+BASE_URL=http://localhost:4000 pnpm thumbnails
 ```
 
 ## ディレクトリ構成
@@ -98,12 +98,12 @@ scripts/
 
 ## 環境変数
 
-| 変数                   | 説明                                                                                          |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL` | 公開 URL（canonical・OGP・投稿文に使用）。既定は `https://reload-co-jp.github.io/regenerator` |
-| `NEXT_PUBLIC_GA_ID`    | GA4 の測定 ID（任意）                                                                         |
+| 変数                   | 説明                                                                        |
+| ---------------------- | --------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | 公開 URL（canonical・OGP・投稿文に使用）。既定は `https://gen.reload.co.jp` |
+| `NEXT_PUBLIC_GA_ID`    | GA4 の測定 ID（任意）                                                       |
 
-本番ビルドの `basePath` は `next.config.js` で `/regenerator` に設定しています。
+独自ドメイン `gen.reload.co.jp` のルートで公開するため `basePath` は使用していません（GitHub Pages 用に `public/CNAME` を配置）。
 
 ## 注意事項
 
