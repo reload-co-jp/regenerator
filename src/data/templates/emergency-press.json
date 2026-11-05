@@ -51,6 +51,27 @@
         ]
       },
       {
+        "id": "flash",
+        "type": "radial",
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#ffffff",
+            "opacity": 0.95
+          },
+          {
+            "offset": 0.25,
+            "color": "#ffffff",
+            "opacity": 0.55
+          },
+          {
+            "offset": 1,
+            "color": "#ffffff",
+            "opacity": 0
+          }
+        ]
+      },
+      {
         "id": "telop",
         "type": "linear",
         "angle": 90,
@@ -151,6 +172,32 @@
           "fill": "#ffffff"
         }
       ]
+    },
+    {
+      "type": "path",
+      "d": "M230,430C230,350 266,322 330,322C394,322 430,350 430,430Z",
+      "fill": "#0e1426"
+    },
+    {
+      "type": "ellipse",
+      "x": 330,
+      "y": 300,
+      "rx": 46,
+      "ry": 50,
+      "fill": "#0e1426"
+    },
+    {
+      "type": "path",
+      "d": "M770,430C770,350 806,322 870,322C934,322 970,350 970,430Z",
+      "fill": "#0e1426"
+    },
+    {
+      "type": "ellipse",
+      "x": 870,
+      "y": 300,
+      "rx": 46,
+      "ry": 50,
+      "fill": "#0e1426"
     },
     {
       "type": "path",
@@ -545,6 +592,28 @@
       "fontFamily": "heavy",
       "fill": "#ffffff",
       "letterSpacing": 0.08
+    },
+    {
+      "type": "circle",
+      "x": 250,
+      "y": 200,
+      "r": 90,
+      "fill": "gradient:flash"
+    },
+    {
+      "type": "circle",
+      "x": 940,
+      "y": 160,
+      "r": 120,
+      "fill": "gradient:flash"
+    },
+    {
+      "type": "circle",
+      "x": 700,
+      "y": 330,
+      "r": 70,
+      "fill": "gradient:flash",
+      "opacity": 0.8
     },
     {
       "type": "rect",

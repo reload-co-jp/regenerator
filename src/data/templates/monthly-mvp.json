@@ -1,45 +1,59 @@
 {
   "id": "monthly-mvp",
-  "title": "MVP発表",
-  "description": "スポーツ中継のような迫力で、今月のMVPを写真付きで発表",
-  "longDescription": "プロスポーツの月間MVP発表をイメージした縦長テンプレート。写真をアップロードして、チームや職場、部活で活躍した人をたたえましょう。",
-  "category": "community",
+  "title": "月間MVP発表",
+  "description": "プロ野球の月間MVP発表のように、写真と成績付きで今月の主役を表彰",
+  "longDescription": "プロ野球の月間MVP賞の発表をイメージした縦長テンプレート。部門、写真、成績（打率・本塁打など）を入れて、チームや職場、部活で活躍した人をたたえましょう。",
+  "category": "ranking",
   "thumbnail": "/images/templates/monthly-mvp.png",
   "createdAt": "2026-11-03",
   "popularity": 80,
-  "tags": ["MVP", "月間MVP", "表彰", "スポーツ", "チーム", "部活", "社内表彰"],
+  "tags": [
+    "MVP",
+    "月間MVP",
+    "表彰",
+    "プロ野球",
+    "スポーツ",
+    "チーム",
+    "部活",
+    "社内表彰",
+    "成績"
+  ],
   "canvas": {
     "width": 1080,
     "height": 1350,
-    "background": "#071640",
+    "background": "#0a1b4d",
     "gradients": [
       {
         "id": "bg",
-        "type": "linear",
-        "angle": 100,
-        "stops": [
-          {
-            "offset": 0,
-            "color": "#0d2b7a"
-          },
-          {
-            "offset": 1,
-            "color": "#050d2b"
-          }
-        ]
-      },
-      {
-        "id": "yellow",
         "type": "linear",
         "angle": 90,
         "stops": [
           {
             "offset": 0,
-            "color": "#ffe45c"
+            "color": "#0f2766"
           },
           {
             "offset": 1,
-            "color": "#ffb300"
+            "color": "#06102e"
+          }
+        ]
+      },
+      {
+        "id": "gold",
+        "type": "linear",
+        "angle": 0,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#c9971f"
+          },
+          {
+            "offset": 0.5,
+            "color": "#ffe38a"
+          },
+          {
+            "offset": 1,
+            "color": "#c9971f"
           }
         ]
       },
@@ -49,11 +63,28 @@
         "stops": [
           {
             "offset": 0,
-            "color": "#3c63c9"
+            "color": "#3b5fb8"
           },
           {
             "offset": 1,
-            "color": "#142d75"
+            "color": "#13286b"
+          }
+        ]
+      },
+      {
+        "id": "fade",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#06102e",
+            "opacity": 0
+          },
+          {
+            "offset": 1,
+            "color": "#06102e",
+            "opacity": 0.95
           }
         ]
       }
@@ -71,7 +102,7 @@
       "id": "month",
       "label": "月",
       "type": "select",
-      "default": "11",
+      "default": "6",
       "required": true,
       "options": [
         {
@@ -125,26 +156,68 @@
       ]
     },
     {
+      "id": "league",
+      "label": "リーグ・大会名",
+      "type": "text",
+      "default": "ジェネ・リーグ",
+      "maxLength": 14
+    },
+    {
+      "id": "division",
+      "label": "部門",
+      "type": "select",
+      "default": "打者部門",
+      "options": [
+        {
+          "value": "打者部門",
+          "label": "打者部門"
+        },
+        {
+          "value": "投手部門",
+          "label": "投手部門"
+        },
+        {
+          "value": "野手部門",
+          "label": "野手部門"
+        },
+        {
+          "value": "新人部門",
+          "label": "新人部門"
+        },
+        {
+          "value": "営業部門",
+          "label": "営業部門"
+        },
+        {
+          "value": "総合部門",
+          "label": "総合部門"
+        }
+      ]
+    },
+    {
       "id": "name",
       "label": "受賞者名",
       "type": "text",
-      "default": "ジェネ田 ジェネ男",
+      "default": "ジェネ田 翔",
       "required": true,
-      "maxLength": 14
+      "maxLength": 12
     },
     {
       "id": "team",
       "label": "チーム・所属",
       "type": "text",
-      "default": "営業2課 #10",
-      "maxLength": 20
+      "default": "東京ジェネレーターズ　背番号10",
+      "maxLength": 24
     },
     {
-      "id": "reason",
-      "label": "選定理由",
-      "type": "textarea",
-      "default": "月間契約数で部署記録を更新。チームのムードメーカーとしても大活躍！",
-      "maxLength": 60
+      "id": "stats",
+      "label": "成績（「項目 数値」の形で入力）",
+      "type": "list",
+      "default": ["打率 .389", "本塁打 9", "打点 24", "安打 35"],
+      "maxItems": 4,
+      "maxLength": 12,
+      "placeholder": "例: 打率 .389",
+      "help": "項目名と数値の間に空白を入れてください（最大4件）"
     },
     {
       "id": "photo",
@@ -163,235 +236,243 @@
       "fill": "gradient:bg"
     },
     {
-      "type": "pattern",
+      "type": "rect",
       "x": 0,
-      "y": 0,
+      "y": 190,
       "width": 1080,
-      "height": 1350,
-      "tileWidth": 60,
-      "tileHeight": 60,
-      "rotation": -30,
-      "opacity": 0.07,
-      "children": [
-        {
-          "type": "rect",
-          "x": 0,
-          "y": 0,
-          "width": 24,
-          "height": 60,
-          "fill": "#ffffff"
-        }
-      ]
-    },
-    {
-      "type": "path",
-      "d": "M0,1060L1080,860L1080,1350L0,1350Z",
-      "fill": "#ffcf1f",
-      "opacity": 0.08
-    },
-    {
-      "type": "text",
-      "text": "{year}  {month}月度",
-      "x": 540,
-      "y": 70,
-      "fontSize": 40,
-      "maxWidth": 800,
-      "textAnchor": "middle",
-      "fontFamily": "heavy",
-      "fill": "#ffffff",
-      "letterSpacing": 0.1
-    },
-    {
-      "type": "text",
-      "text": "MVP",
-      "x": 552,
-      "y": 232,
-      "fontSize": 280,
-      "textAnchor": "middle",
-      "fontFamily": "heavy",
-      "fill": "none",
-      "stroke": "#ffcf1f",
-      "strokeWidth": 3,
-      "opacity": 0.5,
-      "letterSpacing": 0.02
-    },
-    {
-      "type": "text",
-      "text": "MVP",
-      "x": 540,
-      "y": 220,
-      "fontSize": 280,
-      "textAnchor": "middle",
-      "fontFamily": "heavy",
-      "fill": "gradient:yellow",
-      "stroke": "#071640",
-      "strokeWidth": 10,
-      "paintOrder": "stroke",
-      "letterSpacing": 0.02
-    },
-    {
-      "type": "text",
-      "text": "MOST VALUABLE PLAYER",
-      "x": 540,
-      "y": 372,
-      "fontSize": 30,
-      "textAnchor": "middle",
-      "fontFamily": "heavy",
-      "fill": "#ffffff",
-      "letterSpacing": 0.35
-    },
-    {
-      "type": "circle",
-      "x": 540,
-      "y": 660,
-      "r": 262,
-      "fill": "none",
-      "stroke": "#ffcf1f",
-      "strokeWidth": 3,
-      "opacity": 0.5,
-      "strokeDasharray": "6 12"
-    },
-    {
-      "type": "circle",
-      "x": 540,
-      "y": 660,
-      "r": 240,
+      "height": 760,
       "fill": "gradient:photo"
     },
     {
       "type": "image",
       "field": "photo",
-      "x": 300,
-      "y": 420,
-      "width": 480,
-      "height": 480,
-      "shape": "circle",
+      "x": 0,
+      "y": 190,
+      "width": 1080,
+      "height": 760,
       "fit": "cover",
-      "stroke": "#ffcf1f",
-      "strokeWidth": 12,
       "placeholder": [
         {
-          "type": "circle",
-          "x": 240,
-          "y": 240,
-          "r": 240,
-          "fill": "gradient:photo",
-          "stroke": "#ffcf1f",
-          "strokeWidth": 12
+          "type": "pattern",
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 760,
+          "tileWidth": 60,
+          "tileHeight": 60,
+          "rotation": -30,
+          "opacity": 0.08,
+          "children": [
+            {
+              "type": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 60,
+              "fill": "#ffffff"
+            }
+          ]
         },
         {
           "type": "circle",
-          "x": 240,
-          "y": 190,
-          "r": 86,
+          "x": 540,
+          "y": 300,
+          "r": 120,
           "fill": "#c9d6ff",
-          "opacity": 0.85
+          "opacity": 0.8
         },
         {
           "type": "path",
-          "d": "M84,420C96,320 160,290 240,290C320,290 384,320 396,420C350,462 296,478 240,478C184,478 130,462 84,420Z",
+          "d": "M290,760C300,560 400,470 540,470C680,470 780,560 790,760Z",
           "fill": "#c9d6ff",
-          "opacity": 0.85
+          "opacity": 0.8
         }
       ]
     },
     {
-      "type": "group",
-      "x": 840,
-      "y": 470,
-      "rotation": 14,
-      "children": [
-        {
-          "type": "path",
-          "d": "M0,-78L16,-59.9L39,-67.5L43.8,-43.8L67.5,-39L59.9,-16L78,0L59.9,16L67.5,39L43.8,43.8L39,67.5L16,59.9L0,78L-16,59.9L-39,67.5L-43.8,43.8L-67.5,39L-59.9,16L-78,0L-59.9,-16L-67.5,-39L-43.8,-43.8L-39,-67.5L-16,-59.9Z",
-          "fill": "#e4002b",
-          "stroke": "#ffffff",
-          "strokeWidth": 4
-        },
-        {
-          "type": "field",
-          "field": "month",
-          "suffix": "月",
-          "x": 0,
-          "y": -12,
-          "fontSize": 40,
-          "maxWidth": 100,
-          "textAnchor": "middle",
-          "fontFamily": "heavy",
-          "fill": "#ffffff"
-        },
-        {
-          "type": "text",
-          "text": "受賞",
-          "x": 0,
-          "y": 26,
-          "fontSize": 26,
-          "textAnchor": "middle",
-          "fontFamily": "sans",
-          "fontWeight": 900,
-          "fill": "#ffffff"
-        }
-      ]
+      "type": "rect",
+      "x": 0,
+      "y": 640,
+      "width": 1080,
+      "height": 310,
+      "fill": "gradient:fade"
     },
     {
-      "type": "path",
-      "d": "M80,950L1020,950L990,1070L50,1070Z",
-      "fill": "#000000",
-      "opacity": 0.3,
-      "x": 10,
-      "y": 12
+      "type": "text",
+      "text": "{year}年 {month}月度",
+      "x": 56,
+      "y": 62,
+      "fontSize": 36,
+      "maxWidth": 500,
+      "maxLines": 1,
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "#ffffff",
+      "letterSpacing": 0.06
     },
     {
-      "type": "path",
-      "d": "M80,950L1020,950L990,1070L50,1070Z",
-      "fill": "gradient:yellow"
+      "type": "text",
+      "text": "月間MVP賞",
+      "x": 52,
+      "y": 136,
+      "fontSize": 92,
+      "maxWidth": 620,
+      "maxLines": 1,
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "gradient:gold",
+      "letterSpacing": 0.04
     },
     {
       "type": "field",
-      "field": "name",
-      "x": 535,
-      "y": 1010,
-      "fontSize": 84,
-      "minFontSize": 36,
-      "maxWidth": 860,
+      "field": "league",
+      "x": 1028,
+      "y": 62,
+      "fontSize": 32,
+      "maxWidth": 420,
+      "maxLines": 1,
+      "textAnchor": "end",
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "#ffffff"
+    },
+    {
+      "type": "rect",
+      "x": 748,
+      "y": 100,
+      "width": 280,
+      "height": 62,
+      "rx": 6,
+      "fill": "#c4161c",
+      "if": "division"
+    },
+    {
+      "type": "field",
+      "field": "division",
+      "x": 888,
+      "y": 131,
+      "fontSize": 36,
+      "maxWidth": 250,
       "maxLines": 1,
       "textAnchor": "middle",
-      "fontFamily": "heavy",
-      "fill": "#071640"
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "#ffffff",
+      "letterSpacing": 0.1
+    },
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 186,
+      "width": 1080,
+      "height": 6,
+      "fill": "gradient:gold"
     },
     {
       "type": "field",
       "field": "team",
-      "x": 540,
-      "y": 1110,
-      "fontSize": 36,
-      "maxWidth": 900,
-      "textAnchor": "middle",
+      "x": 56,
+      "y": 812,
+      "fontSize": 34,
+      "maxWidth": 968,
+      "maxLines": 1,
       "fontFamily": "sans",
-      "fontWeight": 900,
-      "fill": "#ffcf1f",
-      "letterSpacing": 0.06
+      "fontWeight": 700,
+      "fill": "#ffe38a"
     },
     {
       "type": "field",
-      "field": "reason",
-      "x": 540,
-      "y": 1222,
-      "fontSize": 34,
-      "minFontSize": 20,
-      "maxWidth": 920,
-      "maxHeight": 130,
-      "lineHeight": 1.5,
-      "keepWords": true,
-      "balance": true,
-      "textAnchor": "middle",
+      "field": "name",
+      "x": 52,
+      "y": 890,
+      "fontSize": 112,
+      "minFontSize": 50,
+      "maxWidth": 976,
+      "maxLines": 1,
       "fontFamily": "sans",
-      "fontWeight": 700,
+      "fontWeight": 900,
+      "fill": "#ffffff",
+      "shadow": {
+        "dy": 4,
+        "blur": 6,
+        "opacity": 0.6
+      }
+    },
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 948,
+      "width": 1080,
+      "height": 6,
+      "fill": "gradient:gold"
+    },
+    {
+      "type": "text",
+      "text": "{month}月の成績",
+      "x": 56,
+      "y": 1008,
+      "fontSize": 30,
+      "maxWidth": 400,
+      "maxLines": 1,
+      "fontFamily": "sans",
+      "fontWeight": 900,
       "fill": "#ffffff"
+    },
+    {
+      "type": "list",
+      "field": "stats",
+      "x": 40,
+      "y": 1046,
+      "width": 1000,
+      "height": 250,
+      "columns": 4,
+      "flow": "row",
+      "columnGap": 16,
+      "item": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "width": "100%",
+          "height": "100%",
+          "rx": 10,
+          "fill": "#ffffff",
+          "opacity": 0.08,
+          "stroke": "#ffe38a",
+          "strokeWidth": 2
+        },
+        {
+          "type": "text",
+          "text": "{item:label}",
+          "x": "50%",
+          "y": "24%",
+          "fontSize": 32,
+          "minFontSize": 16,
+          "maxWidth": "90%",
+          "maxLines": 1,
+          "textAnchor": "middle",
+          "fontFamily": "sans",
+          "fontWeight": 700,
+          "fill": "#c9d6ff"
+        },
+        {
+          "type": "text",
+          "text": "{item:value}",
+          "x": "50%",
+          "y": "62%",
+          "fontSize": 88,
+          "minFontSize": 28,
+          "maxWidth": "90%",
+          "maxLines": 1,
+          "textAnchor": "middle",
+          "fontFamily": "heavy",
+          "fill": "gradient:gold"
+        }
+      ]
     }
   ],
   "share": {
-    "hashtags": ["MVP", "発表ジェネレーター"],
-    "text": "{year}年{month}月のMVPは {name}（{team}）に決定！"
+    "hashtags": ["月間MVP", "発表ジェネレーター"],
+    "text": "{year}年{month}月度 月間MVP賞（{division}）は {name} に決定！"
   }
 }

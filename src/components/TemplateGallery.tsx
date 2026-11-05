@@ -270,7 +270,7 @@ export function TemplateGallery({
         query: "",
         category: null,
         sort: "popular",
-      }).slice(0, 6),
+      }).slice(0, 3),
     [templates]
   )
   const newest = useMemo(
@@ -279,7 +279,7 @@ export function TemplateGallery({
         query: "",
         category: null,
         sort: "new",
-      }).slice(0, 6),
+      }).slice(0, 3),
     [templates]
   )
   const filtering = query.trim() !== "" || category !== null
@@ -330,7 +330,7 @@ export function TemplateGallery({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="テンプレートを検索（例: 漢字、ランキング）"
+            placeholder="テンプレートを検索（例: 漢字、号外）"
             enterKeyHint="search"
           />
           <VisuallyHidden as="label" htmlFor="template-sort">

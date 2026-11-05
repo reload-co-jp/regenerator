@@ -25,17 +25,13 @@ const REQUIRED_IDS = [
   "buzzword-of-the-year",
   "breaking-news",
   "emergency-press",
-  "ranking",
-  "award",
   "monthly-mvp",
-  "retirement-announcement",
-  "personal-news",
 ]
 
 describe("template definitions", () => {
   const templates = getAllTemplates()
 
-  it("includes the 10 initial templates", () => {
+  it("includes the initial templates", () => {
     expect(templates.map((t) => t.id).sort()).toEqual([...REQUIRED_IDS].sort())
   })
 
@@ -115,10 +111,10 @@ describe("template definitions", () => {
 
 describe("SVG escaping", () => {
   it("does not interpret user input as markup", () => {
-    const template = getTemplate("breaking-news")!
+    const template = getTemplate("emergency-press")!
     const values = {
       ...initialValues(template),
-      headline: '<script>alert(1)</script><a href="x">',
+      announcement: '<script>alert(1)</script><a href="x">',
     }
     const svg = renderToStaticMarkup(
       <TemplateSvg template={template} values={values} />
@@ -215,8 +211,26 @@ describe("helpers", () => {
 })
 
 describe("vertical text", () => {
-  it("renders one character per line", async () => {
-    const { toVertical } = await import("../template-renderer")
-    expect(toVertical("ジェネ ー")).toBe("ジ\nェ\nネ\n　\n｜")
+  it("groups two-digit numbers as tate-chu-yoko", async () => {
+    const { verticalTokens } = await import("../template-renderer")
+    expect(verticalTokens("令和8年12月")).toEqual([
+      "令",
+      "和",
+      "8",
+      "年",
+      "12",
+      "月",
+    ])
+    expect(verticalTokens("2026年")).toEqual(["2", "0", "2", "6", "年"])
+  })
+
+  it("renders vertical punctuation forms", () => {
+    const template = getTemplate("breaking-news")!
+    const values = { ...initialValues(template), headline: "「猫」が歩く" }
+    const svg = renderToStaticMarkup(
+      <TemplateSvg template={template} values={values} />
+    )
+    expect(svg).toContain("﹁")
+    expect(svg).toContain("﹂")
   })
 })

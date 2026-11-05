@@ -71,7 +71,7 @@ export interface BaseElement {
   /** 指定フィールドが空のときだけ描画する */
   unless?: string
   shadow?: ShadowDefinition
-  /** list 要素内でのみ有効。順位（1始まり）ごとのプロパティ上書き */
+  /** list 要素内でのみ有効。順位（1始まり）または "odd" / "even" ごとのプロパティ上書き */
   byIndex?: Record<string, Partial<Omit<TemplateElement, "type">>>
 }
 

@@ -117,7 +117,7 @@ function validateElements(
       }
     }
     const refField = (key: string | undefined, prop: string) => {
-      if (key && key !== "item" && !fields.has(key)) {
+      if (key && key !== "item" && key !== "itemFlag" && !fields.has(key)) {
         problems.push(
           `${path}.${prop} が存在しないフィールド "${key}" を参照しています`
         )
