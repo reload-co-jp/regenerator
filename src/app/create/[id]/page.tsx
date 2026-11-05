@@ -128,19 +128,9 @@ export default async function CreatePage({ params }: Props) {
                   name: SITE_NAME,
                   item: absoluteUrl("/"),
                 },
-                ...(category
-                  ? [
-                      {
-                        "@type": "ListItem",
-                        position: 2,
-                        name: category.name,
-                        item: absoluteUrl(`/?category=${category.id}`),
-                      },
-                    ]
-                  : []),
                 {
                   "@type": "ListItem",
-                  position: category ? 3 : 2,
+                  position: 2,
                   name: template.title,
                   item: url,
                 },
