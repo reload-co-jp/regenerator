@@ -30,6 +30,12 @@ const Status = styled.p<{ $error?: boolean }>`
   font-weight: 700;
 `
 
+const Hint = styled.p`
+  font-size: 0.75rem;
+  color: ${theme.color.textMuted};
+  margin-top: 8px;
+`
+
 const XLogo = () => (
   <svg
     width="16"
@@ -109,6 +115,16 @@ export function ShareButtons({
     }
   }
 
+  const onCopyLink = async () => {
+    try {
+      await copyText(content.url)
+      track("remix_link_copy", { template_id: templateId })
+      flash("作品リンクをコピーしました。開いた人が同じ画像を見られます")
+    } catch {
+      flash("コピーできませんでした", true)
+    }
+  }
+
   const onCopyText = async () => {
     try {
       await copyText(shareTextWithTags(content))
@@ -148,7 +164,17 @@ export function ShareButtons({
         >
           投稿文をコピー
         </Button>
+        <Button
+          type="button"
+          onClick={onCopyLink}
+          style={{ gridColumn: "1 / -1" }}
+        >
+          🔗 作品リンクをコピー
+        </Button>
       </Row>
+      <Hint>
+        作品リンクには入力した文字が含まれます（写真は含まれません）。開いた人はそのまま自分版を作れます。
+      </Hint>
       <Status $error={status?.error} role="status">
         {status?.text}
       </Status>

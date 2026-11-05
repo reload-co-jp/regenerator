@@ -12,6 +12,9 @@ export type AnalyticsEvent =
   | "share_click"
   | "copy_image"
   | "share_text_copy"
+  | "remix_open"
+  | "remix_link_copy"
+  | "sample_apply"
 
 export interface AnalyticsParams {
   template_id: string

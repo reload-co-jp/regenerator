@@ -2,7 +2,15 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { JsonLd } from "@/components/JsonLd"
 import { TemplateEditor } from "@/components/TemplateEditor"
+import { TemplateGuide } from "@/components/TemplateGuide"
 import {
+  howToSteps,
+  relatedTemplates,
+  sampleLinks,
+  templateFaq,
+} from "@/lib/seo-content"
+import {
+  categories,
   getAllTemplates,
   getCategory,
   getTemplate,
@@ -58,9 +66,19 @@ export default async function CreatePage({ params }: Props) {
   if (!template) notFound()
   const category = getCategory(template.category)
   const url = absoluteUrl(`/create/${template.id}/`)
+  const steps = howToSteps(template)
+  const faq = templateFaq(template)
   return (
     <>
       <TemplateEditor template={template} category={category} />
+      <TemplateGuide
+        template={template}
+        steps={steps}
+        samples={sampleLinks(template)}
+        faq={faq}
+        related={relatedTemplates(template, getAllTemplates())}
+        categories={categories}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -80,6 +98,26 @@ export default async function CreatePage({ params }: Props) {
                 ? absoluteUrl(template.thumbnail)
                 : undefined,
               keywords: template.tags.join(","),
+            },
+            {
+              "@type": "HowTo",
+              name: `${template.title}画像の作り方`,
+              totalTime: "PT1M",
+              step: steps.map((s, i) => ({
+                "@type": "HowToStep",
+                position: i + 1,
+                name: s.name,
+                text: s.text,
+                url: `${url}#howto-heading`,
+              })),
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: faq.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
             },
             {
               "@type": "BreadcrumbList",

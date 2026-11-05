@@ -246,6 +246,19 @@ export interface ShareDefinition {
   text: string
 }
 
+/** よくある質問（テンプレートページに表示し、FAQPage 構造化データにも使う） */
+export interface FaqItem {
+  q: string
+  a: string
+}
+
+/** 「おまかせ」ボタンで流し込む入力例。指定しないフィールドは既定値のまま */
+export interface TemplateSample {
+  /** 作例一覧に表示する短い見出し */
+  title: string
+  values: Record<string, string | number | string[]>
+}
+
 export interface TemplateDefinition {
   id: string
   title: string
@@ -262,6 +275,10 @@ export interface TemplateDefinition {
   fields: FieldDefinition[]
   elements: TemplateElement[]
   share: ShareDefinition
+  /** おまかせ入力・作例一覧に使う入力例 */
+  samples?: TemplateSample[]
+  /** テンプレート固有のよくある質問 */
+  faq?: FaqItem[]
 }
 
 export interface Category {

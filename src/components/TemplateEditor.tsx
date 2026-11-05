@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import styled from "styled-components"
 import { track } from "@/lib/analytics"
+import { readRemixFromSearch } from "@/lib/remix"
 import { buildShareContent } from "@/lib/share"
 import { downloadBlob, pngFileName, svgToPngBlob } from "@/lib/svg-to-png"
 import { initialValues } from "@/lib/template-values"
@@ -44,7 +45,6 @@ const Layout = styled(Container)`
 `
 
 const Info = styled.header`
-  grid-area: info;
   nav {
     font-size: 0.8rem;
     color: ${theme.color.textMuted};
@@ -138,6 +138,44 @@ const ResetRow = styled.div`
   margin-top: 16px;
 `
 
+const SampleRow = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed ${theme.color.border};
+  p {
+    font-size: 0.8rem;
+    color: ${theme.color.textMuted};
+  }
+`
+
+const RemixBanner = styled.div`
+  border: 2px solid ${theme.color.primary};
+  background: #fff4f5;
+  border-radius: ${theme.radius.md};
+  padding: 12px 14px;
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  strong {
+    display: block;
+    font-size: 0.95rem;
+  }
+`
+
+const InfoStack = styled.div`
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
+
 const Notice = styled.p`
   font-size: 0.8rem;
   color: ${theme.color.danger};
@@ -170,12 +208,26 @@ export function TemplateEditor({
   const [touched, setTouched] = useState(false)
   const [downloaded, setDownloaded] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  /** シェアされた作品リンクから開いたとき true */
+  const [remixed, setRemixed] = useState(false)
+  const lastSample = useRef(-1)
   const svgRef = useRef<SVGSVGElement>(null)
   const blobCache = useRef<{ key: string; blob: Promise<Blob> } | null>(null)
 
   useEffect(() => {
     track("template_view", { template_id: template.id })
   }, [template.id])
+
+  // 作品リンク（?v=...）から開いた場合は、その入力内容を復元する
+  useEffect(() => {
+    const shared = readRemixFromSearch(template, window.location.search)
+    if (!shared) return
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setValues({ ...initialValues(template), ...shared })
+    setRemixed(true)
+    /* eslint-enable react-hooks/set-state-in-effect */
+    track("remix_open", { template_id: template.id })
+  }, [template])
 
   const errors = useMemo(
     () => validateAll(template.fields, values),
@@ -224,6 +276,33 @@ export function TemplateEditor({
     setValues(initialValues(template))
     setTouched(false)
     setDownloaded(false)
+    setRemixed(false)
+    // 作品リンクのクエリを消して、まっさらなテンプレートの URL に戻す
+    window.history.replaceState(null, "", window.location.pathname)
+  }
+
+  const samples = template.samples ?? []
+  /** 入力例をランダムに流し込む（直前と同じ例は避ける） */
+  const applySample = () => {
+    if (samples.length === 0) return
+    let i = Math.floor(Math.random() * samples.length)
+    if (samples.length > 1 && i === lastSample.current)
+      i = (i + 1) % samples.length
+    lastSample.current = i
+    // 写真などの画像は入力済みのものを残す
+    const images = Object.fromEntries(
+      template.fields
+        .filter((f) => f.type === "image")
+        .map((f) => [f.id, values[f.id] ?? null])
+    )
+    setValues({
+      ...initialValues(template),
+      ...images,
+      ...samples[i].values,
+    })
+    setTouched(true)
+    setDownloaded(false)
+    track("sample_apply", { template_id: template.id, sample: i })
   }
 
   const { width, height } = template.canvas
@@ -232,25 +311,38 @@ export function TemplateEditor({
 
   return (
     <Layout style={{ ["--ratio" as string]: width / height }}>
-      <Info>
-        <nav aria-label="パンくずリスト">
-          <Link href="/">トップ</Link>
+      <InfoStack>
+        <Info>
+          <nav aria-label="パンくずリスト">
+            <Link href="/">トップ</Link>
+            {category && (
+              <>
+                {" › "}
+                <Link href={`/?category=${category.id}`}>{category.name}</Link>
+              </>
+            )}
+          </nav>
           {category && (
-            <>
-              {" › "}
-              <Link href={`/?category=${category.id}`}>{category.name}</Link>
-            </>
+            <CategoryBadge>
+              <span aria-hidden="true">{category.icon}</span>
+              {category.name}
+            </CategoryBadge>
           )}
-        </nav>
-        {category && (
-          <CategoryBadge>
-            <span aria-hidden="true">{category.icon}</span>
-            {category.name}
-          </CategoryBadge>
+          <h1>{template.title}</h1>
+          <p>{template.description}</p>
+        </Info>
+        {remixed && (
+          <RemixBanner role="status">
+            <div>
+              <strong>🎁 シェアされた作品を表示しています</strong>
+              文字を書き換えて「自分版」を作ってみましょう！
+            </div>
+            <Button type="button" $size="sm" onClick={reset}>
+              まっさらから作る
+            </Button>
+          </RemixBanner>
         )}
-        <h1>{template.title}</h1>
-        <p>{template.description}</p>
-      </Info>
+      </InfoStack>
 
       <PreviewArea aria-label="プレビュー">
         <div>
@@ -269,6 +361,19 @@ export function TemplateEditor({
       </PreviewArea>
 
       <FormArea aria-label="入力フォーム">
+        {samples.length > 0 && (
+          <SampleRow>
+            <Button
+              type="button"
+              $variant="primary"
+              $size="sm"
+              onClick={applySample}
+            >
+              🎲 おまかせで入力
+            </Button>
+            <p>ネタに迷ったら押すだけ。何度でも引き直せます。</p>
+          </SampleRow>
+        )}
         <DynamicForm
           fields={template.fields}
           values={values}
