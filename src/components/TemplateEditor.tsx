@@ -318,7 +318,7 @@ export function TemplateEditor({
             {category && (
               <>
                 {" › "}
-                <Link href={`/?category=${category.id}`}>{category.name}</Link>
+                <Link href={`/#${template.id}`}>{template.title}の特集</Link>
               </>
             )}
           </nav>

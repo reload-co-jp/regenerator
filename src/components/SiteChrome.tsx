@@ -58,7 +58,7 @@ export function SiteHeader() {
           {SITE_NAME}
         </Logo>
         <Nav aria-label="メイン">
-          <Link href="/#templates">テンプレート一覧</Link>
+          <Link href="/#features">特集テンプレート</Link>
         </Nav>
       </HeaderInner>
     </HeaderBar>

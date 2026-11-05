@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/JsonLd"
-import { TemplateGallery } from "@/components/TemplateGallery"
-import { categories, getAllTemplates } from "@/lib/template-loader"
+import { TemplateFeatures } from "@/components/TemplateFeatures"
+import { sampleLinks } from "@/lib/seo-content"
+import { getAllTemplates, getCategory } from "@/lib/template-loader"
 import { SITE_DESCRIPTION, SITE_NAME, absoluteUrl } from "@/lib/site"
 
 export const metadata: Metadata = {
@@ -13,15 +14,20 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  const templates = getAllTemplates()
+  // 人気順に並べ、1テンプレートずつ特集として大きく紹介する
+  const templates = [...getAllTemplates()].sort(
+    (a, b) =>
+      (b.popularity ?? 0) - (a.popularity ?? 0) ||
+      a.title.localeCompare(b.title)
+  )
   return (
     <>
-      <TemplateGallery
-        templates={templates}
-        // テンプレートが1件もないカテゴリは表示しない
-        categories={categories.filter((c) =>
-          templates.some((t) => t.category === c.id)
-        )}
+      <TemplateFeatures
+        items={templates.map((t) => ({
+          template: t,
+          category: getCategory(t.category),
+          samples: sampleLinks(t),
+        }))}
       />
       <JsonLd
         data={{
@@ -36,7 +42,7 @@ export default function HomePage() {
             },
             {
               "@type": "ItemList",
-              name: "画像テンプレート一覧",
+              name: "特集テンプレート",
               itemListElement: templates.map((t, i) => ({
                 "@type": "ListItem",
                 position: i + 1,
