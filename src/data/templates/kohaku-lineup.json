@@ -1,0 +1,497 @@
+{
+  "id": "kohaku-lineup",
+  "title": "紅白出場者発表",
+  "description": "年末の歌合戦風に、紅組・白組の出場者をずらりと発表",
+  "longDescription": "大みそかの歌番組の出場者発表をイメージした、紅組と白組の2列レイアウト。カラオケ大会や忘年会の出し物、推しの「出場者予想」にも使えます。",
+  "category": "entertainment",
+  "thumbnail": "/images/templates/kohaku-lineup.png",
+  "createdAt": "2026-11-01",
+  "popularity": 92,
+  "tags": [
+    "紅白",
+    "歌合戦",
+    "出場者",
+    "年末",
+    "大みそか",
+    "忘年会",
+    "カラオケ"
+  ],
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "background": "#0b0f2e",
+    "gradients": [
+      {
+        "id": "night",
+        "type": "radial",
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#2b3a8f"
+          },
+          {
+            "offset": 1,
+            "color": "#0b0f2e"
+          }
+        ]
+      },
+      {
+        "id": "red",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#e2203f"
+          },
+          {
+            "offset": 1,
+            "color": "#9e0b24"
+          }
+        ]
+      },
+      {
+        "id": "white",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#ffffff"
+          },
+          {
+            "offset": 1,
+            "color": "#e9e6df"
+          }
+        ]
+      },
+      {
+        "id": "gold",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#fff1bf"
+          },
+          {
+            "offset": 0.5,
+            "color": "#e3b04b"
+          },
+          {
+            "offset": 1,
+            "color": "#a8761f"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "edition",
+      "label": "第◯回",
+      "type": "number",
+      "default": 77,
+      "min": 1,
+      "max": 999
+    },
+    {
+      "id": "show",
+      "label": "番組名",
+      "type": "text",
+      "default": "年末歌合戦",
+      "required": true,
+      "maxLength": 12
+    },
+    {
+      "id": "red",
+      "label": "紅組の出場者",
+      "type": "list",
+      "default": [
+        "山田はなこ",
+        "スターダスト・ガールズ",
+        "演歌の星 さくら",
+        "ミラクル☆シスターズ",
+        "湯けむり三姉妹",
+        "DJ ももか"
+      ],
+      "maxItems": 12,
+      "maxLength": 20,
+      "placeholder": "出場者名"
+    },
+    {
+      "id": "white",
+      "label": "白組の出場者",
+      "type": "list",
+      "default": [
+        "佐藤たろう",
+        "ネオンボーイズ",
+        "北の大地 じろう",
+        "ロックンロール部長",
+        "サンダーブラザーズ",
+        "MC まさる"
+      ],
+      "maxItems": 12,
+      "maxLength": 20,
+      "placeholder": "出場者名"
+    },
+    {
+      "id": "note",
+      "label": "放送日などの補足",
+      "type": "text",
+      "default": "12月31日（木）よる7時20分から",
+      "maxLength": 30
+    }
+  ],
+  "elements": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "width": 1080,
+      "height": 1350,
+      "fill": "gradient:night"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 90,
+      "y": 70,
+      "scale": 1.2,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 990,
+      "y": 110,
+      "scale": 1.6,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 960,
+      "y": 300,
+      "scale": 0.8,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 130,
+      "y": 300,
+      "scale": 0.9,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 60,
+      "y": 200,
+      "scale": 0.6,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 1030,
+      "y": 220,
+      "scale": 0.6,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 800,
+      "y": 40,
+      "scale": 0.7,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 270,
+      "y": 40,
+      "scale": 0.8,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "field",
+      "field": "edition",
+      "prefix": "第",
+      "suffix": "回",
+      "x": 540,
+      "y": 86,
+      "fontSize": 44,
+      "maxWidth": 600,
+      "textAnchor": "middle",
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "gradient:gold",
+      "letterSpacing": 0.25
+    },
+    {
+      "type": "field",
+      "field": "show",
+      "x": 540,
+      "y": 186,
+      "fontSize": 132,
+      "minFontSize": 60,
+      "maxWidth": 960,
+      "textAnchor": "middle",
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#ffffff",
+      "letterSpacing": 0.06,
+      "shadow": {
+        "dy": 6,
+        "blur": 10,
+        "color": "#000",
+        "opacity": 0.5
+      }
+    },
+    {
+      "type": "group",
+      "x": 540,
+      "y": 290,
+      "children": [
+        {
+          "type": "path",
+          "d": "M-300,-34L300,-34L280,0L300,34L-300,34L-280,0Z",
+          "fill": "gradient:gold"
+        },
+        {
+          "type": "text",
+          "text": "出場者決定！",
+          "x": 0,
+          "y": 1,
+          "fontSize": 46,
+          "textAnchor": "middle",
+          "fontFamily": "sans",
+          "fontWeight": 900,
+          "fill": "#3a1c00",
+          "letterSpacing": 0.2
+        }
+      ]
+    },
+    {
+      "type": "rect",
+      "x": 44,
+      "y": 366,
+      "width": 486,
+      "height": 860,
+      "rx": 26,
+      "fill": "gradient:red",
+      "stroke": "gradient:gold",
+      "strokeWidth": 4
+    },
+    {
+      "type": "circle",
+      "x": 287,
+      "y": 436,
+      "r": 52,
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "text": "紅",
+      "x": 287,
+      "y": 436,
+      "fontSize": 64,
+      "textAnchor": "middle",
+      "fontFamily": "brush",
+      "fill": "#c8102e"
+    },
+    {
+      "type": "text",
+      "text": "組",
+      "x": 368,
+      "y": 446,
+      "fontSize": 40,
+      "textAnchor": "start",
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#ffffff"
+    },
+    {
+      "type": "line",
+      "x": 80,
+      "y": 508,
+      "x2": 494,
+      "y2": 508,
+      "stroke": "#ffd6dc",
+      "strokeWidth": 2,
+      "opacity": 0.7
+    },
+    {
+      "type": "list",
+      "field": "red",
+      "x": 64,
+      "y": 520,
+      "width": 446,
+      "height": 690,
+      "maxItemHeight": 96,
+      "item": [
+        {
+          "type": "text",
+          "text": "{item}",
+          "x": "50%",
+          "y": "50%",
+          "fontSize": 46,
+          "minFontSize": 20,
+          "maxWidth": "100%-24",
+          "maxHeight": "82%",
+          "maxLines": 1,
+          "textAnchor": "middle",
+          "fontFamily": "mincho",
+          "fontWeight": 800,
+          "fill": "#ffffff"
+        },
+        {
+          "type": "line",
+          "x": "6%",
+          "y": "100%",
+          "x2": "94%",
+          "y2": "100%",
+          "stroke": "#ffc2cc",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "2 6",
+          "strokeLinecap": "round"
+        }
+      ]
+    },
+    {
+      "type": "rect",
+      "x": 550,
+      "y": 366,
+      "width": 486,
+      "height": 860,
+      "rx": 26,
+      "fill": "gradient:white",
+      "stroke": "gradient:gold",
+      "strokeWidth": 4
+    },
+    {
+      "type": "circle",
+      "x": 793,
+      "y": 436,
+      "r": 52,
+      "fill": "#1b2563"
+    },
+    {
+      "type": "text",
+      "text": "白",
+      "x": 793,
+      "y": 436,
+      "fontSize": 64,
+      "textAnchor": "middle",
+      "fontFamily": "brush",
+      "fill": "#ffffff"
+    },
+    {
+      "type": "text",
+      "text": "組",
+      "x": 874,
+      "y": 446,
+      "fontSize": 40,
+      "textAnchor": "start",
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#1b2563"
+    },
+    {
+      "type": "line",
+      "x": 586,
+      "y": 508,
+      "x2": 1000,
+      "y2": 508,
+      "stroke": "#1b2563",
+      "strokeWidth": 2,
+      "opacity": 0.25
+    },
+    {
+      "type": "list",
+      "field": "white",
+      "x": 570,
+      "y": 520,
+      "width": 446,
+      "height": 690,
+      "maxItemHeight": 96,
+      "item": [
+        {
+          "type": "text",
+          "text": "{item}",
+          "x": "50%",
+          "y": "50%",
+          "fontSize": 46,
+          "minFontSize": 20,
+          "maxWidth": "100%-24",
+          "maxHeight": "82%",
+          "maxLines": 1,
+          "textAnchor": "middle",
+          "fontFamily": "mincho",
+          "fontWeight": 800,
+          "fill": "#14194a"
+        },
+        {
+          "type": "line",
+          "x": "6%",
+          "y": "100%",
+          "x2": "94%",
+          "y2": "100%",
+          "stroke": "#9aa0c4",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "2 6",
+          "strokeLinecap": "round"
+        }
+      ]
+    },
+    {
+      "type": "circle",
+      "x": 540,
+      "y": 796,
+      "r": 40,
+      "fill": "#0b0f2e",
+      "stroke": "gradient:gold",
+      "strokeWidth": 4
+    },
+    {
+      "type": "text",
+      "text": "VS",
+      "x": 540,
+      "y": 796,
+      "fontSize": 30,
+      "textAnchor": "middle",
+      "fontFamily": "heavy",
+      "fill": "gradient:gold"
+    },
+    {
+      "type": "line",
+      "x": 160,
+      "y": 1282,
+      "x2": 920,
+      "y2": 1282,
+      "stroke": "gradient:gold",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "if": "note"
+    },
+    {
+      "type": "field",
+      "field": "note",
+      "x": 540,
+      "y": 1282,
+      "fontSize": 36,
+      "maxWidth": 900,
+      "textAnchor": "middle",
+      "fontFamily": "sans",
+      "fontWeight": 700,
+      "fill": "#ffffff"
+    }
+  ],
+  "share": {
+    "hashtags": ["紅白予想", "発表ジェネレーター"],
+    "text": "第{edition}回「{show}」出場者を発表します！"
+  }
+}

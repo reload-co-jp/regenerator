@@ -1,0 +1,351 @@
+{
+  "id": "breaking-news",
+  "title": "速報・号外",
+  "description": "街頭で配られる号外のような、白抜きの大見出しで重大発表",
+  "longDescription": "新聞の号外をイメージした縦長テンプレート。大きな白抜き見出し、赤い副見出し、写真と本文を組み合わせて、身近な大ニュースを報じましょう。",
+  "category": "news",
+  "thumbnail": "/images/templates/breaking-news.png",
+  "createdAt": "2026-10-20",
+  "popularity": 95,
+  "tags": ["号外", "速報", "新聞", "ニュース", "見出し", "重大発表"],
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "background": "#f0ebe0"
+  },
+  "fields": [
+    {
+      "id": "paper",
+      "label": "新聞名",
+      "type": "text",
+      "default": "まいにち我が家新聞",
+      "required": true,
+      "maxLength": 14
+    },
+    {
+      "id": "date",
+      "label": "発行日",
+      "type": "date",
+      "default": "today",
+      "required": true
+    },
+    {
+      "id": "headline",
+      "label": "大見出し",
+      "type": "text",
+      "default": "猫、自力でドアを開ける",
+      "required": true,
+      "maxLength": 24
+    },
+    {
+      "id": "subhead",
+      "label": "副見出し",
+      "type": "text",
+      "default": "家族騒然「もう誰にも止められない」",
+      "maxLength": 30
+    },
+    {
+      "id": "body",
+      "label": "本文",
+      "type": "textarea",
+      "default": "5日午後、自宅リビングにおいて、飼い猫のタマ（4）が前足でレバーを押し下げ、ドアを自力で開けることに初めて成功した。関係者によると、タマは数週間前から取っ手をじっと見つめる様子が確認されていたという。家族は今後の対応を協議している。",
+      "maxLength": 200
+    },
+    {
+      "id": "photo",
+      "label": "写真",
+      "type": "image"
+    },
+    {
+      "id": "caption",
+      "label": "写真説明",
+      "type": "text",
+      "default": "ドアの前で得意げな表情を見せるタマ＝5日",
+      "maxLength": 30
+    }
+  ],
+  "elements": [
+    {
+      "type": "pattern",
+      "x": 0,
+      "y": 0,
+      "width": 1080,
+      "height": 1350,
+      "tileWidth": 6,
+      "tileHeight": 6,
+      "opacity": 0.25,
+      "children": [
+        {
+          "type": "circle",
+          "x": 3,
+          "y": 3,
+          "r": 0.8,
+          "fill": "#8f846c"
+        }
+      ]
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 44,
+      "width": 196,
+      "height": 156,
+      "fill": "#c4161c"
+    },
+    {
+      "type": "text",
+      "text": "号外",
+      "x": 146,
+      "y": 122,
+      "fontSize": 86,
+      "textAnchor": "middle",
+      "fontFamily": "serif",
+      "fontWeight": 900,
+      "fill": "#ffffff",
+      "letterSpacing": 0.04
+    },
+    {
+      "type": "field",
+      "field": "paper",
+      "x": 276,
+      "y": 100,
+      "fontSize": 64,
+      "minFontSize": 30,
+      "maxWidth": 756,
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#111111"
+    },
+    {
+      "type": "field",
+      "field": "date",
+      "format": "YYYY年（KY）M月D日　ddd曜日",
+      "x": 278,
+      "y": 172,
+      "fontSize": 26,
+      "maxWidth": 756,
+      "fontFamily": "serif",
+      "fontWeight": 700,
+      "fill": "#333333"
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 222,
+      "width": 984,
+      "height": 7,
+      "fill": "#111111"
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 235,
+      "width": 984,
+      "height": 2,
+      "fill": "#111111"
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 258,
+      "width": 984,
+      "height": 350,
+      "fill": "#111111"
+    },
+    {
+      "type": "pattern",
+      "x": 48,
+      "y": 258,
+      "width": 984,
+      "height": 350,
+      "tileWidth": 10,
+      "tileHeight": 10,
+      "opacity": 0.12,
+      "children": [
+        {
+          "type": "circle",
+          "x": 5,
+          "y": 5,
+          "r": 2.2,
+          "fill": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "field": "headline",
+      "x": 540,
+      "y": 433,
+      "fontSize": 168,
+      "minFontSize": 56,
+      "maxWidth": 940,
+      "maxHeight": 320,
+      "maxLines": 2,
+      "lineHeight": 1.12,
+      "keepWords": true,
+      "balance": true,
+      "textAnchor": "middle",
+      "fontFamily": "serif",
+      "fontWeight": 900,
+      "fill": "#ffffff",
+      "letterSpacing": -0.02
+    },
+    {
+      "type": "field",
+      "field": "subhead",
+      "x": 540,
+      "y": 676,
+      "fontSize": 64,
+      "minFontSize": 28,
+      "maxWidth": 984,
+      "maxHeight": 120,
+      "maxLines": 2,
+      "lineHeight": 1.15,
+      "keepWords": true,
+      "balance": true,
+      "textAnchor": "middle",
+      "fontFamily": "serif",
+      "fontWeight": 900,
+      "fill": "#c4161c"
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 748,
+      "width": 984,
+      "height": 3,
+      "fill": "#111111"
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 776,
+      "width": 456,
+      "height": 380,
+      "fill": "#d7d0c2"
+    },
+    {
+      "type": "image",
+      "field": "photo",
+      "x": 48,
+      "y": 776,
+      "width": 456,
+      "height": 380,
+      "fit": "cover",
+      "placeholder": [
+        {
+          "type": "pattern",
+          "x": 0,
+          "y": 0,
+          "width": 456,
+          "height": 380,
+          "tileWidth": 8,
+          "tileHeight": 8,
+          "children": [
+            {
+              "type": "circle",
+              "x": 4,
+              "y": 4,
+              "r": 2,
+              "fill": "#9d9381"
+            }
+          ]
+        },
+        {
+          "type": "circle",
+          "x": 228,
+          "y": 160,
+          "r": 62,
+          "fill": "#7a705f"
+        },
+        {
+          "type": "path",
+          "d": "M108,380C108,280 160,240 228,240C296,240 348,280 348,380Z",
+          "fill": "#7a705f"
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "field": "caption",
+      "x": 48,
+      "y": 1184,
+      "fontSize": 24,
+      "minFontSize": 16,
+      "maxWidth": 456,
+      "maxLines": 2,
+      "lineHeight": 1.4,
+      "keepWords": true,
+      "fontFamily": "serif",
+      "fontWeight": 700,
+      "fill": "#333333"
+    },
+    {
+      "type": "line",
+      "x": 532,
+      "y": 776,
+      "x2": 532,
+      "y2": 1210,
+      "stroke": "#111111",
+      "strokeWidth": 1
+    },
+    {
+      "type": "field",
+      "field": "body",
+      "x": 560,
+      "y": 776,
+      "width": 472,
+      "height": 434,
+      "verticalAlign": "top",
+      "fontSize": 31,
+      "minFontSize": 20,
+      "lineHeight": 1.62,
+      "fontFamily": "serif",
+      "fontWeight": 700,
+      "fill": "#1a1a1a"
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 1236,
+      "width": 984,
+      "height": 2,
+      "fill": "#111111"
+    },
+    {
+      "type": "rect",
+      "x": 48,
+      "y": 1243,
+      "width": 984,
+      "height": 6,
+      "fill": "#111111"
+    },
+    {
+      "type": "field",
+      "field": "paper",
+      "suffix": "　号外",
+      "x": 48,
+      "y": 1290,
+      "fontSize": 26,
+      "maxWidth": 600,
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#111111"
+    },
+    {
+      "type": "text",
+      "text": "※この号外はフィクションです",
+      "x": 1032,
+      "y": 1290,
+      "fontSize": 22,
+      "textAnchor": "end",
+      "fontFamily": "serif",
+      "fontWeight": 700,
+      "fill": "#555555"
+    }
+  ],
+  "share": {
+    "hashtags": ["号外", "発表ジェネレーター"],
+    "text": "【号外】{headline}"
+  }
+}

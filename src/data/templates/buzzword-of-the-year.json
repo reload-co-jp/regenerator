@@ -1,0 +1,232 @@
+{
+  "id": "buzzword-of-the-year",
+  "title": "今年の流行語",
+  "description": "今年いちばん流行った言葉を、ポップな吹き出しで大賞発表",
+  "longDescription": "年末の流行語大賞をイメージした、黄色×黒のポップなデザイン。家族・職場・友達グループの「今年の流行語」を発表しましょう。",
+  "category": "seasonal",
+  "thumbnail": "/images/templates/buzzword-of-the-year.png",
+  "createdAt": "2026-11-02",
+  "popularity": 88,
+  "tags": ["流行語", "流行語大賞", "年末", "ことば", "ネタ", "口ぐせ"],
+  "canvas": {
+    "width": 1200,
+    "height": 630,
+    "background": "#ffd60a"
+  },
+  "fields": [
+    {
+      "id": "year",
+      "label": "年",
+      "type": "text",
+      "default": "2026",
+      "maxLength": 4,
+      "required": true
+    },
+    {
+      "id": "word",
+      "label": "流行語",
+      "type": "text",
+      "default": "それ、AIに聞いた？",
+      "required": true,
+      "maxLength": 24
+    },
+    {
+      "id": "meaning",
+      "label": "解説",
+      "type": "textarea",
+      "default": "何を相談しても返ってくる、令和の合言葉。会議中に3回は聞いた。",
+      "maxLength": 70
+    },
+    {
+      "id": "winner",
+      "label": "受賞者",
+      "type": "text",
+      "default": "営業部 みなさん",
+      "maxLength": 20,
+      "placeholder": "言い出した人など"
+    }
+  ],
+  "elements": [
+    {
+      "type": "pattern",
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 630,
+      "tileWidth": 28,
+      "tileHeight": 28,
+      "children": [
+        {
+          "type": "circle",
+          "x": 7,
+          "y": 7,
+          "r": 3.2,
+          "fill": "#ff9f1c",
+          "opacity": 0.55
+        },
+        {
+          "type": "circle",
+          "x": 21,
+          "y": 21,
+          "r": 3.2,
+          "fill": "#ff9f1c",
+          "opacity": 0.55
+        }
+      ]
+    },
+    {
+      "type": "path",
+      "d": "M-20,470L1220,400L1220,650L-20,650Z",
+      "fill": "#111111"
+    },
+    {
+      "type": "rect",
+      "x": 74,
+      "y": 128,
+      "width": 1060,
+      "height": 300,
+      "rx": 46,
+      "fill": "#111111"
+    },
+    {
+      "type": "path",
+      "d": "M250,410L200,520L360,412Z",
+      "fill": "#111111",
+      "x": 14,
+      "y": 14
+    },
+    {
+      "type": "path",
+      "d": "M250,410L200,520L360,412Z",
+      "fill": "#ffffff",
+      "stroke": "#111111",
+      "strokeWidth": 8,
+      "strokeLinejoin": "round"
+    },
+    {
+      "type": "rect",
+      "x": 60,
+      "y": 114,
+      "width": 1060,
+      "height": 300,
+      "rx": 46,
+      "fill": "#ffffff",
+      "stroke": "#111111",
+      "strokeWidth": 8
+    },
+    {
+      "type": "path",
+      "d": "M256,404L213,500L346,404Z",
+      "fill": "#ffffff"
+    },
+    {
+      "type": "field",
+      "field": "word",
+      "prefix": "「",
+      "suffix": "」",
+      "x": 590,
+      "y": 266,
+      "fontSize": 128,
+      "minFontSize": 40,
+      "maxWidth": 980,
+      "maxHeight": 250,
+      "maxLines": 2,
+      "lineHeight": 1.15,
+      "keepWords": true,
+      "balance": true,
+      "textAnchor": "middle",
+      "fontFamily": "heavy",
+      "fill": "#111111"
+    },
+    {
+      "type": "group",
+      "x": 60,
+      "y": 40,
+      "children": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 470,
+          "height": 58,
+          "rx": 29,
+          "fill": "#111111"
+        },
+        {
+          "type": "text",
+          "text": "{year}年　今年の流行語",
+          "x": 235,
+          "y": 30,
+          "fontSize": 32,
+          "maxWidth": 430,
+          "textAnchor": "middle",
+          "fontFamily": "rounded",
+          "fontWeight": 800,
+          "fill": "#ffd60a",
+          "letterSpacing": 0.08
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "x": 1060,
+      "y": 92,
+      "rotation": 12,
+      "children": [
+        {
+          "type": "path",
+          "d": "M0,-88L12.5,-70.9L30.1,-82.7L36,-62.4L56.6,-67.4L55.2,-46.3L76.2,-44L67.7,-24.6L86.7,-15.3L72,0L86.7,15.3L67.7,24.6L76.2,44L55.2,46.3L56.6,67.4L36,62.4L30.1,82.7L12.5,70.9L0,88L-12.5,70.9L-30.1,82.7L-36,62.4L-56.6,67.4L-55.2,46.3L-76.2,44L-67.7,24.6L-86.7,15.3L-72,0L-86.7,-15.3L-67.7,-24.6L-76.2,-44L-55.2,-46.3L-56.6,-67.4L-36,-62.4L-30.1,-82.7L-12.5,-70.9Z",
+          "fill": "#e4002b",
+          "stroke": "#111111",
+          "strokeWidth": 5,
+          "strokeLinejoin": "round"
+        },
+        {
+          "type": "text",
+          "text": "年間\n大賞",
+          "x": 0,
+          "y": 2,
+          "fontSize": 40,
+          "lineHeight": 1.05,
+          "textAnchor": "middle",
+          "fontFamily": "heavy",
+          "fill": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "field": "meaning",
+      "x": 600,
+      "y": 540,
+      "fontSize": 32,
+      "minFontSize": 18,
+      "maxWidth": 1080,
+      "maxHeight": 92,
+      "lineHeight": 1.45,
+      "keepWords": true,
+      "balance": true,
+      "textAnchor": "middle",
+      "fontFamily": "rounded",
+      "fontWeight": 800,
+      "fill": "#ffffff"
+    },
+    {
+      "type": "field",
+      "field": "winner",
+      "prefix": "受賞：",
+      "x": 1150,
+      "y": 462,
+      "fontSize": 28,
+      "maxWidth": 560,
+      "textAnchor": "end",
+      "fontFamily": "rounded",
+      "fontWeight": 800,
+      "fill": "#ffd60a"
+    }
+  ],
+  "share": {
+    "hashtags": ["今年の流行語", "発表ジェネレーター"],
+    "text": "{year}年 今年の流行語は「{word}」に決定！"
+  }
+}

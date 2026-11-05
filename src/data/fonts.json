@@ -1,0 +1,63 @@
+{
+  "families": {
+    "sans": {
+      "family": "Noto Sans JP",
+      "package": "noto-sans-jp",
+      "weights": [400, 700, 900],
+      "fallback": [
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        "sans-serif"
+      ]
+    },
+    "serif": {
+      "family": "Noto Serif JP",
+      "package": "noto-serif-jp",
+      "weights": [700, 900],
+      "fallback": ["Hiragino Mincho ProN", "Yu Mincho", "serif"]
+    },
+    "brush": {
+      "family": "Yuji Syuku",
+      "package": "yuji-syuku",
+      "weights": [400],
+      "fallback": [
+        "Noto Serif JP",
+        "Hiragino Mincho ProN",
+        "Yu Mincho",
+        "serif"
+      ]
+    },
+    "mincho": {
+      "family": "Shippori Mincho B1",
+      "package": "shippori-mincho-b1",
+      "weights": [500, 800],
+      "fallback": [
+        "Noto Serif JP",
+        "Hiragino Mincho ProN",
+        "Yu Mincho",
+        "serif"
+      ]
+    },
+    "heavy": {
+      "family": "Dela Gothic One",
+      "package": "dela-gothic-one",
+      "weights": [400],
+      "fallback": ["Noto Sans JP", "Hiragino Sans", "Yu Gothic", "sans-serif"]
+    },
+    "maru": {
+      "family": "Kiwi Maru",
+      "package": "kiwi-maru",
+      "weights": [500],
+      "fallback": ["Hiragino Maru Gothic ProN", "Noto Sans JP", "sans-serif"]
+    },
+    "rounded": {
+      "family": "M PLUS Rounded 1c",
+      "package": "m-plus-rounded-1c",
+      "weights": [800],
+      "fallback": ["Hiragino Maru Gothic ProN", "Noto Sans JP", "sans-serif"]
+    }
+  },
+  "emoji": ["Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"]
+}
