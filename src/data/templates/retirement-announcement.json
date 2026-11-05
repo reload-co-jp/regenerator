@@ -1,0 +1,464 @@
+{
+  "id": "retirement-announcement",
+  "title": "卒業・引退発表",
+  "description": "桜の花びらが舞う、やさしい雰囲気の卒業・引退のお知らせ",
+  "longDescription": "アイドルの卒業発表や引退会見の告知をイメージした、桜色のやわらかなテンプレート。卒業、引退、退職、活動休止から選べます。送別や門出のメッセージにも。",
+  "category": "entertainment",
+  "thumbnail": "/images/templates/retirement-announcement.png",
+  "createdAt": "2026-10-15",
+  "popularity": 78,
+  "tags": ["卒業", "引退", "退職", "活動休止", "お知らせ", "送別", "門出"],
+  "canvas": {
+    "width": 1200,
+    "height": 630,
+    "background": "#fbeef2",
+    "gradients": [
+      {
+        "id": "bg",
+        "type": "linear",
+        "angle": 20,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#fde9ef"
+          },
+          {
+            "offset": 1,
+            "color": "#ece7fa"
+          }
+        ]
+      },
+      {
+        "id": "photoBg",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#ffffff"
+          },
+          {
+            "offset": 1,
+            "color": "#fbe3ec"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "kind",
+      "label": "種類",
+      "type": "select",
+      "default": "卒業",
+      "required": true,
+      "options": [
+        {
+          "value": "卒業",
+          "label": "卒業"
+        },
+        {
+          "value": "引退",
+          "label": "引退"
+        },
+        {
+          "value": "退職",
+          "label": "退職"
+        },
+        {
+          "value": "活動休止",
+          "label": "活動休止"
+        },
+        {
+          "value": "退団",
+          "label": "退団"
+        }
+      ]
+    },
+    {
+      "id": "name",
+      "label": "名前",
+      "type": "text",
+      "default": "星野 ジェネ",
+      "required": true,
+      "maxLength": 14
+    },
+    {
+      "id": "group",
+      "label": "所属",
+      "type": "text",
+      "default": "おうちアイドル部",
+      "maxLength": 20
+    },
+    {
+      "id": "date",
+      "label": "日付",
+      "type": "date",
+      "default": "2027-03-31",
+      "required": true
+    },
+    {
+      "id": "message",
+      "label": "メッセージ",
+      "type": "textarea",
+      "default": "たくさんの応援、本当にありがとうございました。これからは新しい場所で、また一歩ずつ歩いていきます。",
+      "maxLength": 90
+    },
+    {
+      "id": "photo",
+      "label": "写真",
+      "type": "image"
+    }
+  ],
+  "elements": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 630,
+      "fill": "gradient:bg"
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 110,
+      "y": 70,
+      "rotation": 20,
+      "scale": 0.9,
+      "fill": "#f7a8c4",
+      "opacity": 0.7
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 1120,
+      "y": 90,
+      "rotation": -30,
+      "scale": 1.1,
+      "fill": "#f7a8c4",
+      "opacity": 0.6
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 1010,
+      "y": 560,
+      "rotation": 50,
+      "scale": 0.8,
+      "fill": "#f7a8c4",
+      "opacity": 0.6
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 40,
+      "y": 520,
+      "rotation": 120,
+      "scale": 0.7,
+      "fill": "#f7a8c4",
+      "opacity": 0.5
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 600,
+      "y": 40,
+      "rotation": 80,
+      "scale": 0.6,
+      "fill": "#f7a8c4",
+      "opacity": 0.4
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 1160,
+      "y": 330,
+      "rotation": 160,
+      "scale": 0.7,
+      "fill": "#f7a8c4",
+      "opacity": 0.5
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 520,
+      "y": 600,
+      "rotation": -60,
+      "scale": 0.6,
+      "fill": "#f7a8c4",
+      "opacity": 0.45
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 860,
+      "y": 30,
+      "rotation": 200,
+      "scale": 0.5,
+      "fill": "#f7a8c4",
+      "opacity": 0.4
+    },
+    {
+      "type": "circle",
+      "x": 290,
+      "y": 315,
+      "r": 232,
+      "fill": "#ffffff",
+      "opacity": 0.55
+    },
+    {
+      "type": "image",
+      "field": "photo",
+      "x": 90,
+      "y": 115,
+      "width": 400,
+      "height": 400,
+      "shape": "circle",
+      "stroke": "#ffffff",
+      "strokeWidth": 10,
+      "placeholder": [
+        {
+          "type": "circle",
+          "x": 200,
+          "y": 200,
+          "r": 200,
+          "fill": "gradient:photoBg",
+          "stroke": "#ffffff",
+          "strokeWidth": 10
+        },
+        {
+          "type": "group",
+          "x": 200,
+          "y": 190,
+          "rotation": 10,
+          "scale": 2.2,
+          "opacity": 0.9,
+          "children": [
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 0,
+              "fill": "#f7a8c4"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 72,
+              "fill": "#f7a8c4"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 144,
+              "fill": "#f7a8c4"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 216,
+              "fill": "#f7a8c4"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 288,
+              "fill": "#f7a8c4"
+            },
+            {
+              "type": "circle",
+              "x": 0,
+              "y": 0,
+              "r": 5,
+              "fill": "#f7c6d6"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "x": 110,
+          "y": 290,
+          "rotation": -20,
+          "scale": 1.1,
+          "opacity": 0.9,
+          "children": [
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 0,
+              "fill": "#fbc8d9"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 72,
+              "fill": "#fbc8d9"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 144,
+              "fill": "#fbc8d9"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 216,
+              "fill": "#fbc8d9"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 288,
+              "fill": "#fbc8d9"
+            },
+            {
+              "type": "circle",
+              "x": 0,
+              "y": 0,
+              "r": 5,
+              "fill": "#f7c6d6"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "x": 300,
+          "y": 300,
+          "rotation": 30,
+          "scale": 1.3,
+          "opacity": 0.8,
+          "children": [
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 0,
+              "fill": "#e9b6ff"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 72,
+              "fill": "#e9b6ff"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 144,
+              "fill": "#e9b6ff"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 216,
+              "fill": "#e9b6ff"
+            },
+            {
+              "type": "path",
+              "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+              "rotation": 288,
+              "fill": "#e9b6ff"
+            },
+            {
+              "type": "circle",
+              "x": 0,
+              "y": 0,
+              "r": 5,
+              "fill": "#f7c6d6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "field": "kind",
+      "suffix": "のお知らせ",
+      "x": 560,
+      "y": 92,
+      "fontSize": 48,
+      "maxWidth": 580,
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#9b4a6c",
+      "letterSpacing": 0.14
+    },
+    {
+      "type": "line",
+      "x": 562,
+      "y": 138,
+      "x2": 1140,
+      "y2": 138,
+      "stroke": "#d88aa8",
+      "strokeWidth": 1.5
+    },
+    {
+      "type": "path",
+      "d": "M0,0C-14,-12 -13,-31 -4,-40L0,-35L4,-40C13,-31 14,-12 0,0Z",
+      "x": 1140,
+      "y": 138,
+      "rotation": 90,
+      "scale": 0.35,
+      "fill": "#d88aa8"
+    },
+    {
+      "type": "field",
+      "field": "group",
+      "x": 562,
+      "y": 186,
+      "fontSize": 28,
+      "maxWidth": 580,
+      "fontFamily": "mincho",
+      "fontWeight": 500,
+      "fill": "#7d5a6b",
+      "letterSpacing": 0.08
+    },
+    {
+      "type": "field",
+      "field": "name",
+      "x": 558,
+      "y": 258,
+      "fontSize": 84,
+      "minFontSize": 40,
+      "maxWidth": 590,
+      "maxLines": 1,
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#3d2333",
+      "letterSpacing": 0.06
+    },
+    {
+      "type": "text",
+      "text": "{date:YYYY年M月D日}をもちまして\n{kind}いたします",
+      "x": 562,
+      "y": 364,
+      "fontSize": 32,
+      "minFontSize": 18,
+      "maxWidth": 580,
+      "maxLines": 2,
+      "lineHeight": 1.5,
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#9b4a6c"
+    },
+    {
+      "type": "field",
+      "field": "message",
+      "x": 562,
+      "y": 438,
+      "width": 580,
+      "height": 150,
+      "verticalAlign": "top",
+      "fontSize": 25,
+      "minFontSize": 16,
+      "lineHeight": 1.75,
+      "fontFamily": "mincho",
+      "fontWeight": 500,
+      "fill": "#4a3340"
+    }
+  ],
+  "share": {
+    "hashtags": ["卒業", "発表ジェネレーター"],
+    "text": "【{kind}のお知らせ】{name}は{date:YYYY年M月D日}をもちまして{kind}いたします。"
+  }
+}

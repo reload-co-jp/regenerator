@@ -1,0 +1,332 @@
+{
+  "id": "kanji-of-the-year",
+  "title": "今年の漢字",
+  "description": "あなたが選ぶ「今年の漢字」を、半紙に大きく揮毫したような画像で発表",
+  "longDescription": "年末恒例の漢字発表をイメージした、毛筆の大きな漢字と選定理由を並べたテンプレートです。個人やチームの一年を一文字で振り返るのにぴったり。",
+  "category": "seasonal",
+  "thumbnail": "/images/templates/kanji-of-the-year.png",
+  "createdAt": "2026-11-01",
+  "popularity": 100,
+  "tags": ["今年の漢字", "年末", "漢字", "一文字", "振り返り", "毛筆", "書道"],
+  "canvas": {
+    "width": 1200,
+    "height": 630,
+    "background": "#efe5cf",
+    "gradients": [
+      {
+        "id": "paper",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          { "offset": 0, "color": "#fffdf7" },
+          { "offset": 1, "color": "#f7f1e3" }
+        ]
+      },
+      {
+        "id": "vignette",
+        "type": "radial",
+        "stops": [
+          { "offset": 0.55, "color": "#000", "opacity": 0 },
+          { "offset": 1, "color": "#5b3a12", "opacity": 0.22 }
+        ]
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "kanji",
+      "label": "漢字（一文字）",
+      "type": "text",
+      "default": "挑",
+      "required": true,
+      "maxLength": 1,
+      "placeholder": "例: 挑",
+      "help": "一文字だけ入力できます"
+    },
+    {
+      "id": "year",
+      "label": "年",
+      "type": "text",
+      "default": "2026",
+      "required": true,
+      "maxLength": 4
+    },
+    {
+      "id": "reason",
+      "label": "選定理由",
+      "type": "textarea",
+      "default": "新しいことに挑戦した一年だったから。転職、引っ越し、初めてのフルマラソン。怖さより楽しさが勝った。",
+      "maxLength": 100,
+      "placeholder": "その漢字を選んだ理由"
+    },
+    {
+      "id": "name",
+      "label": "選んだ人",
+      "type": "text",
+      "default": "わたし",
+      "maxLength": 16,
+      "placeholder": "名前やチーム名"
+    }
+  ],
+  "elements": [
+    {
+      "type": "pattern",
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 630,
+      "tileWidth": 60,
+      "tileHeight": 46,
+      "opacity": 0.5,
+      "children": [
+        {
+          "type": "line",
+          "x": 4,
+          "y": 10,
+          "x2": 22,
+          "y2": 12,
+          "stroke": "#c9b48a",
+          "strokeWidth": 1,
+          "opacity": 0.5
+        },
+        {
+          "type": "line",
+          "x": 30,
+          "y": 30,
+          "x2": 41,
+          "y2": 27,
+          "stroke": "#c9b48a",
+          "strokeWidth": 1,
+          "opacity": 0.4
+        },
+        {
+          "type": "line",
+          "x": 44,
+          "y": 6,
+          "x2": 50,
+          "y2": 14,
+          "stroke": "#b9a074",
+          "strokeWidth": 0.8,
+          "opacity": 0.35
+        },
+        {
+          "type": "circle",
+          "x": 15,
+          "y": 38,
+          "r": 1.2,
+          "fill": "#b9a074",
+          "opacity": 0.4
+        }
+      ]
+    },
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 630,
+      "fill": "gradient:vignette"
+    },
+
+    {
+      "type": "rect",
+      "x": 70,
+      "y": 38,
+      "width": 440,
+      "height": 554,
+      "fill": "gradient:paper",
+      "shadow": {
+        "dx": 0,
+        "dy": 10,
+        "blur": 14,
+        "color": "#5b3a12",
+        "opacity": 0.28
+      }
+    },
+    {
+      "type": "rect",
+      "x": 70,
+      "y": 38,
+      "width": 440,
+      "height": 26,
+      "fill": "#2b2118",
+      "opacity": 0.9
+    },
+    {
+      "type": "rect",
+      "x": 70,
+      "y": 566,
+      "width": 440,
+      "height": 26,
+      "fill": "#2b2118",
+      "opacity": 0.9
+    },
+    {
+      "type": "circle",
+      "x": 128,
+      "y": 492,
+      "r": 9,
+      "fill": "#111",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 146,
+      "y": 512,
+      "r": 4,
+      "fill": "#111",
+      "opacity": 0.8
+    },
+    {
+      "type": "circle",
+      "x": 438,
+      "y": 128,
+      "r": 5,
+      "fill": "#111",
+      "opacity": 0.7
+    },
+    {
+      "type": "field",
+      "field": "kanji",
+      "x": 290,
+      "y": 310,
+      "fontSize": 390,
+      "minFontSize": 120,
+      "maxWidth": 400,
+      "maxHeight": 460,
+      "maxLines": 1,
+      "textAnchor": "middle",
+      "fontFamily": "brush",
+      "fill": "#141210"
+    },
+    {
+      "type": "group",
+      "x": 452,
+      "y": 512,
+      "rotation": -5,
+      "children": [
+        {
+          "type": "rect",
+          "x": -36,
+          "y": -36,
+          "width": 72,
+          "height": 72,
+          "rx": 6,
+          "fill": "#c0262d",
+          "opacity": 0.92
+        },
+        {
+          "type": "rect",
+          "x": -29,
+          "y": -29,
+          "width": 58,
+          "height": 58,
+          "rx": 3,
+          "fill": "none",
+          "stroke": "#fdf3e6",
+          "strokeWidth": 2
+        },
+        {
+          "type": "field",
+          "field": "year",
+          "x": 0,
+          "y": -9,
+          "fontSize": 18,
+          "maxWidth": 50,
+          "textAnchor": "middle",
+          "fontFamily": "mincho",
+          "fontWeight": 800,
+          "fill": "#fdf3e6"
+        },
+        {
+          "type": "text",
+          "text": "選定",
+          "x": 0,
+          "y": 13,
+          "fontSize": 18,
+          "textAnchor": "middle",
+          "fontFamily": "mincho",
+          "fontWeight": 800,
+          "fill": "#fdf3e6",
+          "letterSpacing": 0.1
+        }
+      ]
+    },
+
+    {
+      "type": "field",
+      "field": "year",
+      "suffix": "年　わたしが選ぶ",
+      "x": 592,
+      "y": 98,
+      "fontSize": 28,
+      "maxWidth": 540,
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#9c1f25",
+      "letterSpacing": 0.18
+    },
+    {
+      "type": "text",
+      "text": "今年の漢字",
+      "x": 588,
+      "y": 178,
+      "fontSize": 104,
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#1c1814",
+      "letterSpacing": 0.12
+    },
+    {
+      "type": "line",
+      "x": 594,
+      "y": 248,
+      "x2": 1130,
+      "y2": 248,
+      "stroke": "#9c1f25",
+      "strokeWidth": 3
+    },
+    {
+      "type": "line",
+      "x": 594,
+      "y": 256,
+      "x2": 1130,
+      "y2": 256,
+      "stroke": "#9c1f25",
+      "strokeWidth": 1
+    },
+    {
+      "type": "field",
+      "field": "reason",
+      "x": 594,
+      "y": 284,
+      "width": 536,
+      "height": 232,
+      "verticalAlign": "top",
+      "fontSize": 34,
+      "minFontSize": 18,
+      "lineHeight": 1.62,
+      "fontFamily": "mincho",
+      "fontWeight": 500,
+      "fill": "#2b241d"
+    },
+    {
+      "type": "field",
+      "field": "name",
+      "prefix": "選　",
+      "x": 1130,
+      "y": 556,
+      "fontSize": 30,
+      "maxWidth": 440,
+      "textAnchor": "end",
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#1c1814",
+      "letterSpacing": 0.1
+    }
+  ],
+  "share": {
+    "hashtags": ["今年の漢字", "発表ジェネレーター"],
+    "text": "{year}年、{name}が選ぶ今年の漢字は「{kanji}」！"
+  }
+}
