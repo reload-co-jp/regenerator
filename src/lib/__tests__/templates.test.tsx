@@ -213,3 +213,10 @@ describe("helpers", () => {
     )
   })
 })
+
+describe("vertical text", () => {
+  it("renders one character per line", async () => {
+    const { toVertical } = await import("../template-renderer")
+    expect(toVertical("ジェネ ー")).toBe("ジ\nェ\nネ\n　\n｜")
+  })
+})

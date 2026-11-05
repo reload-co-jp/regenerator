@@ -105,6 +105,8 @@ export interface TextLikeElement extends BaseElement {
   balance?: boolean
   /** フィールドが空のときに表示するテキスト */
   emptyText?: string
+  /** 縦書き（1文字ずつ縦に並べる。lineHeight が字送りになる） */
+  vertical?: boolean
 }
 
 export interface TextElement extends TextLikeElement {

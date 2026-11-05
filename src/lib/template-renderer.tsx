@@ -26,6 +26,7 @@ import { assetPath } from "./site"
 import {
   estimateMeasure,
   fitText,
+  graphemes,
   type FitResult,
   type MeasureFn,
 } from "./text-layout"
@@ -111,9 +112,19 @@ export function textContent(
     const raw = formatValue(ctx.values[el.field], field, el.format)
     content = raw === "" ? "" : `${el.prefix ?? ""}${raw}${el.suffix ?? ""}`
   }
-  if (content.trim() === "" && el.emptyText)
-    return resolveText(el.emptyText, ctx)
-  return content
+  if (content.trim() === "" && el.emptyText) {
+    content = resolveText(el.emptyText, ctx)
+  }
+  return el.vertical ? toVertical(content) : content
+}
+
+/** 縦書き用に1文字ずつ改行する（長音記号などは縦向きの字形に置き換える） */
+export function toVertical(text: string): string {
+  return graphemes(text.replace(/\s+/g, "　").trim())
+    .map((g) =>
+      g === "ー" || g === "－" ? "｜" : g === "〜" || g === "～" ? "≀" : g
+    )
+    .join("\n")
 }
 
 function isVisible(el: TemplateElement, ctx: RenderContext): boolean {
@@ -180,7 +191,7 @@ export function layoutText(
   const weight = resolveWeight(fontKey, el.fontWeight)
   const maxWidth = el.maxWidth ?? el.width
   const maxHeight = el.maxHeight ?? el.height
-  const wrap = el.wrap ?? maxWidth !== undefined
+  const wrap = el.vertical ? false : (el.wrap ?? maxWidth !== undefined)
   const fit = fitText(content, {
     fontSize: el.fontSize ?? 32,
     minFontSize: el.minFontSize,
