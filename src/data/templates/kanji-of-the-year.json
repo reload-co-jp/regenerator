@@ -1,33 +1,103 @@
 {
   "id": "kanji-of-the-year",
   "title": "今年の漢字",
-  "description": "あなたが選ぶ「今年の漢字」を、半紙に大きく揮毫したような画像で発表",
-  "longDescription": "年末恒例の漢字発表をイメージした、毛筆の大きな漢字と選定理由を並べたテンプレートです。個人やチームの一年を一文字で振り返るのにぴったり。",
+  "description": "お寺の舞台で大きな和紙に揮毫する、年末恒例の漢字発表風の画像",
+  "longDescription": "年末恒例の「今年の漢字」発表の舞台をイメージしたテンプレート。紫の縁取りの看板と大きな和紙、縦書きの署名、赤い毛氈の台まで再現しました。個人やチームの一年を一文字で振り返るのにぴったりです。",
   "category": "seasonal",
   "thumbnail": "/images/templates/kanji-of-the-year.png",
   "createdAt": "2026-11-01",
   "popularity": 100,
-  "tags": ["今年の漢字", "年末", "漢字", "一文字", "振り返り", "毛筆", "書道"],
+  "tags": [
+    "今年の漢字",
+    "年末",
+    "漢字",
+    "一文字",
+    "振り返り",
+    "毛筆",
+    "書道",
+    "揮毫"
+  ],
   "canvas": {
     "width": 1200,
     "height": 630,
-    "background": "#efe5cf",
+    "background": "#eceef1",
     "gradients": [
       {
-        "id": "paper",
+        "id": "sky",
         "type": "linear",
         "angle": 90,
         "stops": [
-          { "offset": 0, "color": "#fffdf7" },
-          { "offset": 1, "color": "#f7f1e3" }
+          {
+            "offset": 0,
+            "color": "#f4f5f7"
+          },
+          {
+            "offset": 1,
+            "color": "#dfe1e5"
+          }
         ]
       },
       {
-        "id": "vignette",
+        "id": "roof",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#6e5d4f"
+          },
+          {
+            "offset": 1,
+            "color": "#4a3c31"
+          }
+        ]
+      },
+      {
+        "id": "board",
+        "type": "linear",
+        "angle": 0,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#f2f3f5"
+          },
+          {
+            "offset": 0.5,
+            "color": "#ffffff"
+          },
+          {
+            "offset": 1,
+            "color": "#eceef1"
+          }
+        ]
+      },
+      {
+        "id": "washi",
         "type": "radial",
         "stops": [
-          { "offset": 0.55, "color": "#000", "opacity": 0 },
-          { "offset": 1, "color": "#5b3a12", "opacity": 0.22 }
+          {
+            "offset": 0,
+            "color": "#fdfcf8"
+          },
+          {
+            "offset": 1,
+            "color": "#f1ede3"
+          }
+        ]
+      },
+      {
+        "id": "wood",
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "offset": 0,
+            "color": "#d9bc93"
+          },
+          {
+            "offset": 1,
+            "color": "#b8946a"
+          }
         ]
       }
     ]
@@ -52,281 +122,967 @@
       "maxLength": 4
     },
     {
-      "id": "reason",
-      "label": "選定理由",
-      "type": "textarea",
-      "default": "新しいことに挑戦した一年だったから。転職、引っ越し、初めてのフルマラソン。怖さより楽しさが勝った。",
-      "maxLength": 100,
-      "placeholder": "その漢字を選んだ理由"
+      "id": "name",
+      "label": "揮毫（書いた人）",
+      "type": "text",
+      "default": "ジェネ家　わたし",
+      "maxLength": 12,
+      "help": "和紙の左側に縦書きで入ります"
     },
     {
-      "id": "name",
-      "label": "選んだ人",
+      "id": "organizer",
+      "label": "主催",
       "type": "text",
-      "default": "わたし",
-      "maxLength": 16,
-      "placeholder": "名前やチーム名"
+      "default": "ジェネ家 漢字選定委員会",
+      "maxLength": 20
+    },
+    {
+      "id": "reason",
+      "label": "選んだ理由（投稿文に入ります）",
+      "type": "textarea",
+      "default": "新しいことに挑戦した一年だったから。",
+      "maxLength": 80
     }
   ],
   "elements": [
     {
-      "type": "pattern",
-      "x": 0,
-      "y": 0,
-      "width": 1200,
-      "height": 630,
-      "tileWidth": 60,
-      "tileHeight": 46,
-      "opacity": 0.5,
-      "children": [
-        {
-          "type": "line",
-          "x": 4,
-          "y": 10,
-          "x2": 22,
-          "y2": 12,
-          "stroke": "#c9b48a",
-          "strokeWidth": 1,
-          "opacity": 0.5
-        },
-        {
-          "type": "line",
-          "x": 30,
-          "y": 30,
-          "x2": 41,
-          "y2": 27,
-          "stroke": "#c9b48a",
-          "strokeWidth": 1,
-          "opacity": 0.4
-        },
-        {
-          "type": "line",
-          "x": 44,
-          "y": 6,
-          "x2": 50,
-          "y2": 14,
-          "stroke": "#b9a074",
-          "strokeWidth": 0.8,
-          "opacity": 0.35
-        },
-        {
-          "type": "circle",
-          "x": 15,
-          "y": 38,
-          "r": 1.2,
-          "fill": "#b9a074",
-          "opacity": 0.4
-        }
-      ]
-    },
-    {
       "type": "rect",
       "x": 0,
       "y": 0,
       "width": 1200,
       "height": 630,
-      "fill": "gradient:vignette"
-    },
-
-    {
-      "type": "rect",
-      "x": 70,
-      "y": 38,
-      "width": 440,
-      "height": 554,
-      "fill": "gradient:paper",
-      "shadow": {
-        "dx": 0,
-        "dy": 10,
-        "blur": 14,
-        "color": "#5b3a12",
-        "opacity": 0.28
-      }
+      "fill": "gradient:sky"
     },
     {
-      "type": "rect",
-      "x": 70,
-      "y": 38,
-      "width": 440,
-      "height": 26,
-      "fill": "#2b2118",
-      "opacity": 0.9
+      "type": "path",
+      "d": "M-20,120L250,70L470,110L470,300L-20,300Z",
+      "fill": "gradient:roof"
+    },
+    {
+      "type": "path",
+      "d": "M-20,120L250,70L470,110",
+      "fill": "none",
+      "stroke": "#3a2f27",
+      "strokeWidth": 6
+    },
+    {
+      "type": "path",
+      "d": "M-20,250L80,200L300,210L470,250L470,300L-20,300Z",
+      "fill": "#5b4a3d"
+    },
+    {
+      "type": "path",
+      "d": "M-20,250L80,200L300,210L470,250",
+      "fill": "none",
+      "stroke": "#3a2f27",
+      "strokeWidth": 5
+    },
+    {
+      "type": "path",
+      "d": "M60,232L110,212L160,232Z",
+      "fill": "#c9a24a",
+      "opacity": 0.8
     },
     {
       "type": "rect",
-      "x": 70,
-      "y": 566,
-      "width": 440,
-      "height": 26,
-      "fill": "#2b2118",
-      "opacity": 0.9
+      "x": -10,
+      "y": 292,
+      "width": 480,
+      "height": 14,
+      "fill": "#7a3b22"
+    },
+    {
+      "type": "rect",
+      "x": -10,
+      "y": 306,
+      "width": 480,
+      "height": 110,
+      "fill": "#2a211c"
+    },
+    {
+      "type": "rect",
+      "x": 20,
+      "y": 306,
+      "width": 12,
+      "height": 110,
+      "fill": "#6a3a24"
+    },
+    {
+      "type": "rect",
+      "x": 110,
+      "y": 306,
+      "width": 12,
+      "height": 110,
+      "fill": "#6a3a24"
+    },
+    {
+      "type": "rect",
+      "x": 200,
+      "y": 306,
+      "width": 12,
+      "height": 110,
+      "fill": "#6a3a24"
+    },
+    {
+      "type": "rect",
+      "x": 290,
+      "y": 306,
+      "width": 12,
+      "height": 110,
+      "fill": "#6a3a24"
+    },
+    {
+      "type": "rect",
+      "x": 380,
+      "y": 306,
+      "width": 12,
+      "height": 110,
+      "fill": "#6a3a24"
+    },
+    {
+      "type": "rect",
+      "x": 30,
+      "y": 330,
+      "width": 60,
+      "height": 22,
+      "fill": "#f3d9a0",
+      "opacity": 0.5
+    },
+    {
+      "type": "rect",
+      "x": 230,
+      "y": 330,
+      "width": 50,
+      "height": 22,
+      "fill": "#f3d9a0",
+      "opacity": 0.45
     },
     {
       "type": "circle",
-      "x": 128,
-      "y": 492,
-      "r": 9,
-      "fill": "#111",
+      "x": 12,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 7,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#2b2b33"
+    },
+    {
+      "type": "circle",
+      "x": 24.5,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 19.5,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#e07a2f"
+    },
+    {
+      "type": "circle",
+      "x": 37,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 32,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#d8d2c6"
+    },
+    {
+      "type": "circle",
+      "x": 49.5,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 44.5,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#c9b8a0"
+    },
+    {
+      "type": "circle",
+      "x": 62,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 57,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#8a2c2c"
+    },
+    {
+      "type": "circle",
+      "x": 74.5,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 69.5,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#6b4b3a"
+    },
+    {
+      "type": "circle",
+      "x": 87,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 82,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#4a4a4a"
+    },
+    {
+      "type": "circle",
+      "x": 99.5,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 94.5,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#3d4f6b"
+    },
+    {
+      "type": "circle",
+      "x": 112,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 107,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#2b2b33"
+    },
+    {
+      "type": "circle",
+      "x": 124.5,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 119.5,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#e07a2f"
+    },
+    {
+      "type": "circle",
+      "x": 137,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 132,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#d8d2c6"
+    },
+    {
+      "type": "circle",
+      "x": 149.5,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 144.5,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#c9b8a0"
+    },
+    {
+      "type": "circle",
+      "x": 162,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 157,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#8a2c2c"
+    },
+    {
+      "type": "circle",
+      "x": 174.5,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 169.5,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#6b4b3a"
+    },
+    {
+      "type": "circle",
+      "x": 187,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 182,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#4a4a4a"
+    },
+    {
+      "type": "circle",
+      "x": 199.5,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 194.5,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#3d4f6b"
+    },
+    {
+      "type": "circle",
+      "x": 212,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 207,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#2b2b33"
+    },
+    {
+      "type": "circle",
+      "x": 224.5,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 219.5,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#e07a2f"
+    },
+    {
+      "type": "circle",
+      "x": 237,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 232,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#d8d2c6"
+    },
+    {
+      "type": "circle",
+      "x": 249.5,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 244.5,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#c9b8a0"
+    },
+    {
+      "type": "circle",
+      "x": 262,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 257,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#8a2c2c"
+    },
+    {
+      "type": "circle",
+      "x": 274.5,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 269.5,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#6b4b3a"
+    },
+    {
+      "type": "circle",
+      "x": 287,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 282,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#4a4a4a"
+    },
+    {
+      "type": "circle",
+      "x": 299.5,
+      "y": 394,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 294.5,
+      "y": 399,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#3d4f6b"
+    },
+    {
+      "type": "circle",
+      "x": 312,
+      "y": 388,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 307,
+      "y": 393,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#2b2b33"
+    },
+    {
+      "type": "circle",
+      "x": 324.5,
+      "y": 391,
+      "r": 4.2,
+      "fill": "#1c1714"
+    },
+    {
+      "type": "rect",
+      "x": 319.5,
+      "y": 396,
+      "width": 10,
+      "height": 14,
+      "rx": 3,
+      "fill": "#e07a2f"
+    },
+    {
+      "type": "circle",
+      "x": 1080,
+      "y": 300,
+      "r": 46,
+      "fill": "#b8372a",
       "opacity": 0.85
     },
     {
       "type": "circle",
-      "x": 146,
-      "y": 512,
-      "r": 4,
-      "fill": "#111",
-      "opacity": 0.8
+      "x": 1140,
+      "y": 330,
+      "r": 52,
+      "fill": "#9e2c22",
+      "opacity": 0.85
     },
     {
       "type": "circle",
-      "x": 438,
-      "y": 128,
-      "r": 5,
-      "fill": "#111",
-      "opacity": 0.7
+      "x": 1010,
+      "y": 350,
+      "r": 40,
+      "fill": "#c9502f",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 1170,
+      "y": 400,
+      "r": 50,
+      "fill": "#b33a2a",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 1060,
+      "y": 410,
+      "r": 44,
+      "fill": "#d4613b",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 1110,
+      "y": 460,
+      "r": 56,
+      "fill": "#a8301f",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 990,
+      "y": 440,
+      "r": 36,
+      "fill": "#c44830",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 1190,
+      "y": 250,
+      "r": 40,
+      "fill": "#7a8f4a",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 1130,
+      "y": 220,
+      "r": 34,
+      "fill": "#6c8440",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 1060,
+      "y": 520,
+      "r": 48,
+      "fill": "#b8372a",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 1170,
+      "y": 540,
+      "r": 52,
+      "fill": "#9e2c22",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 960,
+      "y": 520,
+      "r": 30,
+      "fill": "#c9502f",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 140,
+      "y": 600,
+      "r": 50,
+      "fill": "#a8301f",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 60,
+      "y": 580,
+      "r": 44,
+      "fill": "#c44830",
+      "opacity": 0.85
+    },
+    {
+      "type": "circle",
+      "x": 240,
+      "y": 615,
+      "r": 46,
+      "fill": "#b8372a",
+      "opacity": 0.85
+    },
+    {
+      "type": "rect",
+      "x": 1100,
+      "y": 330,
+      "width": 64,
+      "height": 26,
+      "fill": "#ffffff",
+      "stroke": "#9aa0a8",
+      "strokeWidth": 1.5
+    },
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 412,
+      "width": 1200,
+      "height": 18,
+      "fill": "gradient:wood"
+    },
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 492,
+      "width": 1200,
+      "height": 16,
+      "fill": "gradient:wood"
+    },
+    {
+      "type": "rect",
+      "x": 31,
+      "y": 430,
+      "width": 18,
+      "height": 200,
+      "fill": "#b08a5e"
+    },
+    {
+      "type": "rect",
+      "x": 141,
+      "y": 430,
+      "width": 18,
+      "height": 200,
+      "fill": "#b08a5e"
+    },
+    {
+      "type": "rect",
+      "x": 251,
+      "y": 430,
+      "width": 18,
+      "height": 200,
+      "fill": "#b08a5e"
+    },
+    {
+      "type": "rect",
+      "x": 931,
+      "y": 430,
+      "width": 18,
+      "height": 200,
+      "fill": "#b08a5e"
+    },
+    {
+      "type": "rect",
+      "x": 1041,
+      "y": 430,
+      "width": 18,
+      "height": 200,
+      "fill": "#b08a5e"
+    },
+    {
+      "type": "rect",
+      "x": 1151,
+      "y": 430,
+      "width": 18,
+      "height": 200,
+      "fill": "#b08a5e"
+    },
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 575,
+      "width": 1200,
+      "height": 55,
+      "fill": "#8a6d50"
+    },
+    {
+      "type": "rect",
+      "x": 330,
+      "y": 14,
+      "width": 540,
+      "height": 586,
+      "fill": "gradient:board",
+      "shadow": {
+        "dx": 0,
+        "dy": 6,
+        "blur": 10,
+        "opacity": 0.25
+      }
+    },
+    {
+      "type": "rect",
+      "x": 342,
+      "y": 24,
+      "width": 516,
+      "height": 112,
+      "fill": "#ffffff",
+      "stroke": "#433a78",
+      "strokeWidth": 5
+    },
+    {
+      "type": "circle",
+      "x": 392,
+      "y": 70,
+      "r": 28,
+      "fill": "none",
+      "stroke": "#c0262d",
+      "strokeWidth": 3
+    },
+    {
+      "type": "text",
+      "text": "選",
+      "x": 392,
+      "y": 71,
+      "fontSize": 34,
+      "textAnchor": "middle",
+      "fontFamily": "brush",
+      "fill": "#c0262d"
+    },
+    {
+      "type": "field",
+      "field": "year",
+      "x": 486,
+      "y": 70,
+      "fontSize": 38,
+      "maxWidth": 100,
+      "maxLines": 1,
+      "textAnchor": "middle",
+      "fontFamily": "serif",
+      "fontWeight": 900,
+      "fill": "#1a1a1a",
+      "letterSpacing": 0.04
+    },
+    {
+      "type": "text",
+      "text": "今年の漢字",
+      "x": 690,
+      "y": 66,
+      "fontSize": 54,
+      "textAnchor": "middle",
+      "fontFamily": "brush",
+      "fill": "#1a1a1a"
+    },
+    {
+      "type": "text",
+      "text": "KOTOSHI no KANJI",
+      "x": 690,
+      "y": 99,
+      "fontSize": 11,
+      "textAnchor": "middle",
+      "fontFamily": "serif",
+      "fontWeight": 700,
+      "fill": "#333333",
+      "letterSpacing": 0.35
+    },
+    {
+      "type": "text",
+      "text": "主催 {organizer}／揮毫 {name}",
+      "x": 600,
+      "y": 120,
+      "fontSize": 15,
+      "maxWidth": 490,
+      "maxLines": 1,
+      "textAnchor": "middle",
+      "fontFamily": "mincho",
+      "fontWeight": 800,
+      "fill": "#1a1a1a"
+    },
+    {
+      "type": "rect",
+      "x": 372,
+      "y": 150,
+      "width": 456,
+      "height": 444,
+      "fill": "#433a78"
+    },
+    {
+      "type": "rect",
+      "x": 380,
+      "y": 158,
+      "width": 440,
+      "height": 428,
+      "fill": "gradient:washi"
     },
     {
       "type": "field",
       "field": "kanji",
-      "x": 290,
-      "y": 310,
-      "fontSize": 390,
+      "x": 632,
+      "y": 368,
+      "fontSize": 420,
       "minFontSize": 120,
-      "maxWidth": 400,
-      "maxHeight": 460,
+      "maxWidth": 370,
+      "maxHeight": 410,
       "maxLines": 1,
       "textAnchor": "middle",
       "fontFamily": "brush",
       "fill": "#141210"
     },
     {
-      "type": "group",
-      "x": 452,
-      "y": 512,
-      "rotation": -5,
+      "type": "field",
+      "field": "name",
+      "vertical": true,
+      "x": 404,
+      "y": 186,
+      "width": 48,
+      "height": 380,
+      "fontSize": 30,
+      "minFontSize": 14,
+      "lineHeight": 1.1,
+      "letterSpacing": 0.04,
+      "fontFamily": "brush",
+      "fill": "#1c1a18"
+    },
+    {
+      "type": "line",
+      "x": 652,
+      "y": 540,
+      "x2": 652,
+      "y2": 600,
+      "stroke": "#141210",
+      "strokeWidth": 1.6,
+      "opacity": 0.8
+    },
+    {
+      "type": "circle",
+      "x": 590,
+      "y": 560,
+      "r": 2.5,
+      "fill": "#141210",
+      "opacity": 0.7
+    },
+    {
+      "type": "rect",
+      "x": 300,
+      "y": 592,
+      "width": 600,
+      "height": 40,
+      "fill": "#b5964f"
+    },
+    {
+      "type": "pattern",
+      "x": 300,
+      "y": 592,
+      "width": 600,
+      "height": 40,
+      "tileWidth": 16,
+      "tileHeight": 16,
+      "opacity": 0.55,
       "children": [
         {
-          "type": "rect",
-          "x": -36,
-          "y": -36,
-          "width": 72,
-          "height": 72,
-          "rx": 6,
-          "fill": "#c0262d",
-          "opacity": 0.92
-        },
-        {
-          "type": "rect",
-          "x": -29,
-          "y": -29,
-          "width": 58,
-          "height": 58,
-          "rx": 3,
+          "type": "path",
+          "d": "M8,1L15,8L8,15L1,8Z",
           "fill": "none",
-          "stroke": "#fdf3e6",
-          "strokeWidth": 2
+          "stroke": "#7a1f1a",
+          "strokeWidth": 1.2
         },
         {
-          "type": "field",
-          "field": "year",
-          "x": 0,
-          "y": -9,
-          "fontSize": 18,
-          "maxWidth": 50,
-          "textAnchor": "middle",
-          "fontFamily": "mincho",
-          "fontWeight": 800,
-          "fill": "#fdf3e6"
-        },
-        {
-          "type": "text",
-          "text": "選定",
-          "x": 0,
-          "y": 13,
-          "fontSize": 18,
-          "textAnchor": "middle",
-          "fontFamily": "mincho",
-          "fontWeight": 800,
-          "fill": "#fdf3e6",
-          "letterSpacing": 0.1
+          "type": "circle",
+          "x": 8,
+          "y": 8,
+          "r": 2,
+          "fill": "#f6e6b0"
         }
       ]
     },
-
     {
-      "type": "field",
-      "field": "year",
-      "suffix": "年　わたしが選ぶ",
-      "x": 592,
-      "y": 98,
-      "fontSize": 28,
-      "maxWidth": 540,
-      "fontFamily": "mincho",
-      "fontWeight": 800,
-      "fill": "#9c1f25",
-      "letterSpacing": 0.18
+      "type": "rect",
+      "x": 288,
+      "y": 600,
+      "width": 624,
+      "height": 14,
+      "fill": "#d21f26"
     },
     {
-      "type": "text",
-      "text": "今年の漢字",
-      "x": 588,
-      "y": 178,
-      "fontSize": 104,
-      "fontFamily": "mincho",
-      "fontWeight": 800,
-      "fill": "#1c1814",
-      "letterSpacing": 0.12
-    },
-    {
-      "type": "line",
-      "x": 594,
-      "y": 248,
-      "x2": 1130,
-      "y2": 248,
-      "stroke": "#9c1f25",
-      "strokeWidth": 3
-    },
-    {
-      "type": "line",
-      "x": 594,
-      "y": 256,
-      "x2": 1130,
-      "y2": 256,
-      "stroke": "#9c1f25",
-      "strokeWidth": 1
-    },
-    {
-      "type": "field",
-      "field": "reason",
-      "x": 594,
-      "y": 284,
-      "width": 536,
-      "height": 232,
-      "verticalAlign": "top",
-      "fontSize": 34,
-      "minFontSize": 18,
-      "lineHeight": 1.62,
-      "fontFamily": "mincho",
-      "fontWeight": 500,
-      "fill": "#2b241d"
-    },
-    {
-      "type": "field",
-      "field": "name",
-      "prefix": "選　",
-      "x": 1130,
-      "y": 556,
-      "fontSize": 30,
-      "maxWidth": 440,
-      "textAnchor": "end",
-      "fontFamily": "mincho",
-      "fontWeight": 800,
-      "fill": "#1c1814",
-      "letterSpacing": 0.1
+      "type": "rect",
+      "x": 288,
+      "y": 614,
+      "width": 624,
+      "height": 3,
+      "fill": "#8f1218"
     }
   ],
   "share": {
     "hashtags": ["今年の漢字", "発表ジェネレーター"],
-    "text": "{year}年、{name}が選ぶ今年の漢字は「{kanji}」！"
+    "text": "{year}年、{name}が選ぶ今年の漢字は「{kanji}」！ {reason}"
   }
 }

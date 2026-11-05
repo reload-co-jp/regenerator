@@ -26,6 +26,7 @@ import { assetPath } from "./site"
 import {
   estimateMeasure,
   fitText,
+  graphemes,
   type FitResult,
   type MeasureFn,
 } from "./text-layout"
@@ -40,6 +41,31 @@ interface ListItemContext {
   value: string
   index: number
   count: number
+  /** 先頭に「*」が付いた項目（初出場などの目印） */
+  flag: boolean
+}
+
+/** list の項目文字列から目印（先頭の * / ＊）を取り出す */
+export function listItemContext(
+  raw: string,
+  index: number,
+  count: number
+): ListItemContext {
+  const flag = /^[*＊]/.test(raw)
+  return {
+    value: flag ? raw.replace(/^[*＊]\s*/, "") : raw,
+    index,
+    count,
+    flag,
+  }
+}
+
+/** "{item:label}" "{item:value}" 用。最初の空白で項目を「ラベル」と「値」に分ける */
+function splitItem(value: string, part: string | undefined): string {
+  if (part !== "label" && part !== "value") return value
+  const m = value.match(/^(\S+)\s+(.+)$/)
+  if (!m) return part === "label" ? value : ""
+  return part === "label" ? m[1] : m[2]
 }
 
 export interface RenderContext {
@@ -85,7 +111,7 @@ function paint(
 function resolveText(text: string, ctx: RenderContext): string {
   return interpolate(text, (key, format) => {
     if (ctx.item) {
-      if (key === "item") return ctx.item.value
+      if (key === "item") return splitItem(ctx.item.value, format)
       if (key === "index") {
         return format === "02"
           ? String(ctx.item.index).padStart(2, "0")
@@ -111,14 +137,19 @@ export function textContent(
     const raw = formatValue(ctx.values[el.field], field, el.format)
     content = raw === "" ? "" : `${el.prefix ?? ""}${raw}${el.suffix ?? ""}`
   }
-  if (content.trim() === "" && el.emptyText)
-    return resolveText(el.emptyText, ctx)
+  if (content.trim() === "" && el.emptyText) {
+    content = resolveText(el.emptyText, ctx)
+  }
   return content
 }
 
 function isVisible(el: TemplateElement, ctx: RenderContext): boolean {
   const empty = (key: string) =>
-    key === "item" ? !ctx.item?.value : isEmptyValue(ctx.values[key])
+    key === "item"
+      ? !ctx.item?.value
+      : key === "itemFlag"
+        ? !ctx.item?.flag
+        : isEmptyValue(ctx.values[key])
   if (el.if && empty(el.if)) return false
   if (el.unless && !empty(el.unless)) return false
   return true
@@ -126,8 +157,11 @@ function isVisible(el: TemplateElement, ctx: RenderContext): boolean {
 
 function applyIndex<T extends TemplateElement>(el: T, ctx: RenderContext): T {
   if (!ctx.item || !el.byIndex) return el
-  const override = el.byIndex[String(ctx.item.index)]
-  return override ? ({ ...el, ...override } as T) : el
+  // "odd" / "even" で奇数・偶数番目、数字で特定の順位を上書き（数字が優先）
+  const parity = el.byIndex[ctx.item.index % 2 === 1 ? "odd" : "even"]
+  const exact = el.byIndex[String(ctx.item.index)]
+  if (!parity && !exact) return el
+  return { ...el, ...parity, ...exact } as T
 }
 
 function transformFor(
@@ -180,6 +214,31 @@ export function layoutText(
   const weight = resolveWeight(fontKey, el.fontWeight)
   const maxWidth = el.maxWidth ?? el.width
   const maxHeight = el.maxHeight ?? el.height
+  if (el.vertical) {
+    // 縦書き: 行 = 列。列の長さ = height、列を並べる幅 = width
+    const pitch = 1 + (el.letterSpacing ?? 0)
+    const fit = fitText(content, {
+      fontSize: el.fontSize ?? 32,
+      minFontSize: el.minFontSize,
+      maxWidth: resolveLength(
+        el.height ?? el.maxHeight,
+        ctx.box.height,
+        Infinity
+      ),
+      maxHeight:
+        el.width !== undefined || el.maxWidth !== undefined
+          ? resolveLength(el.width ?? el.maxWidth, ctx.box.width, Infinity)
+          : undefined,
+      maxLines: el.maxLines,
+      lineHeight: el.lineHeight ?? 1.5,
+      wrap: el.wrap ?? true,
+      autoFit: el.autoFit ?? true,
+      keepWords: el.keepWords,
+      balance: el.balance,
+      measure: (text, size) => verticalTokens(text).length * size * pitch,
+    })
+    return { ...fit, weight, fontKey }
+  }
   const wrap = el.wrap ?? maxWidth !== undefined
   const fit = fitText(content, {
     fontSize: el.fontSize ?? 32,
@@ -213,6 +272,7 @@ function renderText(
   const content = textContent(el, ctx)
   if (content === "") return null
   const layout = layoutText(el, content, ctx)
+  if (el.vertical) return renderVerticalText(el, layout, ctx, key)
   const x = resolveLength(el.x, ctx.box.width)
   const y = resolveLength(el.y, ctx.box.height)
   const anchor =
@@ -269,6 +329,179 @@ function renderText(
           </tspan>
         ))}
       </text>
+    </g>
+  )
+}
+
+/** 縦書きで向きを変える記号: 縦書き用の字形に置き換える */
+const VERTICAL_FORMS: Record<string, string> = {
+  "「": "﹁",
+  "」": "﹂",
+  "『": "﹃",
+  "』": "﹄",
+  "（": "︵",
+  "）": "︶",
+  "(": "︵",
+  ")": "︶",
+  "【": "︻",
+  "】": "︼",
+  "〔": "︹",
+  "〕": "︺",
+  "〈": "︿",
+  "〉": "﹀",
+  "《": "︽",
+  "》": "︾",
+  "［": "﹇",
+  "］": "﹈",
+  "｛": "︷",
+  "｝": "︸",
+  "…": "︙",
+  "‥": "︰",
+}
+/** 縦書きで 90 度回転させる記号 */
+const VERTICAL_ROTATE = new Set(Array.from("ー－—―–-〜～~＝=→←⇒：:；;"))
+/** 縦書きで右上に寄せる句読点 */
+const VERTICAL_PUNCT = new Set(Array.from("、。，．,."))
+/** 縦書きで少し右上に寄せる小書き仮名 */
+const VERTICAL_SMALL = new Set(
+  Array.from(
+    "ぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ"
+  )
+)
+
+/** 縦書きのトークン化。2桁までの半角数字は縦中横として1文字分にまとめる */
+export function verticalTokens(text: string): string[] {
+  const out: string[] = []
+  let digits = ""
+  const flush = () => {
+    // 2桁までは縦中横（1文字分）、3桁以上は1字ずつ縦に並べる
+    if (digits.length > 0 && digits.length <= 2) out.push(digits)
+    else out.push(...Array.from(digits))
+    digits = ""
+  }
+  for (const g of graphemes(text)) {
+    if (/^[0-9]$/.test(g)) {
+      digits += g
+      continue
+    }
+    flush()
+    out.push(g)
+  }
+  flush()
+  return out
+}
+
+function renderVerticalText(
+  el: TextElement | FieldElement,
+  layout: FitResult & { weight: number; fontKey: string },
+  ctx: RenderContext,
+  key: string
+): ReactNode {
+  const x = resolveLength(el.x, ctx.box.width)
+  const y = resolveLength(el.y, ctx.box.height)
+  const width = resolveLength(
+    el.width ?? el.maxWidth,
+    ctx.box.width,
+    layout.height
+  )
+  const height = resolveLength(
+    el.height ?? el.maxHeight,
+    ctx.box.height,
+    layout.width
+  )
+  const size = layout.fontSize
+  const pitch = size * (1 + (el.letterSpacing ?? 0))
+  const blockWidth = layout.height
+  const align =
+    el.textAlign ?? (el.textAnchor === "middle" ? "center" : "right")
+  const right =
+    align === "center"
+      ? x + (width + blockWidth) / 2
+      : align === "left"
+        ? x + blockWidth
+        : x + width
+  const valign = el.verticalAlign ?? "top"
+  const columns = layout.lines.map(verticalTokens)
+  const longest = Math.max(0, ...columns.map((c) => c.length)) * pitch
+  const top =
+    valign === "middle"
+      ? y + (height - longest) / 2
+      : valign === "bottom"
+        ? y + height - longest
+        : y
+  const textProps = {
+    ...(common(el, ctx, key) as SVGProps<SVGTextElement>),
+    fill: paint(el.fill ?? "#000", ctx),
+    fontFamily: fontStack(layout.fontKey),
+    fontWeight: layout.weight,
+    textAnchor: "middle" as const,
+    dominantBaseline: "central" as const,
+    paintOrder: el.paintOrder === "stroke" ? ("stroke" as const) : undefined,
+    strokeLinejoin:
+      el.strokeLinejoin ?? (el.stroke ? ("round" as const) : undefined),
+  }
+  const glyphs: ReactNode[] = []
+  columns.forEach((tokens, col) => {
+    const cx = right - size / 2 - col * layout.lineHeightPx
+    tokens.forEach((token, i) => {
+      const cy = top + i * pitch + size / 2
+      const k = `${col}-${i}`
+      if (token.trim() === "") return
+      if (/^[0-9]{2}$/.test(token)) {
+        glyphs.push(
+          <text
+            key={k}
+            {...textProps}
+            x={r2(cx)}
+            y={r2(cy)}
+            fontSize={r2(size * 0.8)}
+            textLength={r2(size * 0.92)}
+            lengthAdjust="spacingAndGlyphs"
+          >
+            {token}
+          </text>
+        )
+        return
+      }
+      if (VERTICAL_ROTATE.has(token)) {
+        glyphs.push(
+          <text
+            key={k}
+            {...textProps}
+            x={r2(cx)}
+            y={r2(cy)}
+            fontSize={size}
+            transform={`rotate(90 ${r2(cx)} ${r2(cy)})`}
+          >
+            {token}
+          </text>
+        )
+        return
+      }
+      const shift = VERTICAL_PUNCT.has(token)
+        ? 0.55
+        : VERTICAL_SMALL.has(token)
+          ? 0.1
+          : 0
+      glyphs.push(
+        <text
+          key={k}
+          {...textProps}
+          x={r2(cx + shift * size)}
+          y={r2(cy - shift * size)}
+          fontSize={size}
+        >
+          {VERTICAL_FORMS[token] ?? token}
+        </text>
+      )
+    })
+  })
+  return (
+    <g key={key} transform={transformFor(x, y, el.rotation)}>
+      {el.shadow && (
+        <defs>{shadowFilter(el.shadow, `${ctx.idPrefix}-${key}-sh`)}</defs>
+      )}
+      {glyphs}
     </g>
   )
 }
@@ -423,7 +656,7 @@ function renderList(
             {
               ...ctx,
               box: { width: slot.width, height: slot.height },
-              item: { value: items[i], index: i + 1, count: items.length },
+              item: listItemContext(items[i], i + 1, items.length),
             },
             `${key}i${i}`
           )}
@@ -744,7 +977,7 @@ export function collectFontUsage(
         items.forEach((value, i) =>
           walk(el.item, {
             ...ctx,
-            item: { value, index: i + 1, count: items.length },
+            item: listItemContext(value, i + 1, items.length),
           })
         )
       }

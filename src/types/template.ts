@@ -71,7 +71,7 @@ export interface BaseElement {
   /** 指定フィールドが空のときだけ描画する */
   unless?: string
   shadow?: ShadowDefinition
-  /** list 要素内でのみ有効。順位（1始まり）ごとのプロパティ上書き */
+  /** list 要素内でのみ有効。順位（1始まり）または "odd" / "even" ごとのプロパティ上書き */
   byIndex?: Record<string, Partial<Omit<TemplateElement, "type">>>
 }
 
@@ -105,6 +105,8 @@ export interface TextLikeElement extends BaseElement {
   balance?: boolean
   /** フィールドが空のときに表示するテキスト */
   emptyText?: string
+  /** 縦書き（1文字ずつ縦に並べる。lineHeight が字送りになる） */
+  vertical?: boolean
 }
 
 export interface TextElement extends TextLikeElement {

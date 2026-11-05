@@ -16,7 +16,13 @@ export default function HomePage() {
   const templates = getAllTemplates()
   return (
     <>
-      <TemplateGallery templates={templates} categories={categories} />
+      <TemplateGallery
+        templates={templates}
+        // テンプレートが1件もないカテゴリは表示しない
+        categories={categories.filter((c) =>
+          templates.some((t) => t.category === c.id)
+        )}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",

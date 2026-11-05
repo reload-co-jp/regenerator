@@ -62,9 +62,9 @@ for (const id of ids) {
 const pick = [
   "kanji-of-the-year",
   "breaking-news",
-  "award",
+  "kohaku-lineup",
   "emergency-press",
-  "ranking",
+  "monthly-mvp",
   "buzzword-of-the-year",
 ]
 const tiles = pick

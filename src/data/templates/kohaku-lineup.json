@@ -1,8 +1,8 @@
 {
   "id": "kohaku-lineup",
-  "title": "紅白出場者発表",
-  "description": "年末の歌合戦風に、紅組・白組の出場者をずらりと発表",
-  "longDescription": "大みそかの歌番組の出場者発表をイメージした、紅組と白組の2列レイアウト。カラオケ大会や忘年会の出し物、推しの「出場者予想」にも使えます。",
+  "title": "紅白出場歌手発表",
+  "description": "大みそかの歌合戦の「出場歌手一覧」風に、紅組・白組の出場者を発表",
+  "longDescription": "年末の歌番組の出場歌手発表で見かける、紅組・白組の2列の一覧表をイメージしたテンプレート。名前の先頭に「*」を付けると「初出場」マークが付きます。カラオケ大会や忘年会の出し物、出場者予想にどうぞ。",
   "category": "entertainment",
   "thumbnail": "/images/templates/kohaku-lineup.png",
   "createdAt": "2026-11-01",
@@ -10,11 +10,13 @@
   "tags": [
     "紅白",
     "歌合戦",
+    "出場歌手",
     "出場者",
     "年末",
     "大みそか",
     "忘年会",
-    "カラオケ"
+    "カラオケ",
+    "初出場"
   ],
   "canvas": {
     "width": 1080,
@@ -23,15 +25,16 @@
     "gradients": [
       {
         "id": "night",
-        "type": "radial",
+        "type": "linear",
+        "angle": 90,
         "stops": [
           {
             "offset": 0,
-            "color": "#2b3a8f"
+            "color": "#1a2466"
           },
           {
             "offset": 1,
-            "color": "#0b0f2e"
+            "color": "#080b24"
           }
         ]
       },
@@ -42,45 +45,30 @@
         "stops": [
           {
             "offset": 0,
-            "color": "#e2203f"
+            "color": "#d81b3c"
           },
           {
             "offset": 1,
-            "color": "#9e0b24"
-          }
-        ]
-      },
-      {
-        "id": "white",
-        "type": "linear",
-        "angle": 90,
-        "stops": [
-          {
-            "offset": 0,
-            "color": "#ffffff"
-          },
-          {
-            "offset": 1,
-            "color": "#e9e6df"
+            "color": "#a30d27"
           }
         ]
       },
       {
         "id": "gold",
         "type": "linear",
-        "angle": 90,
+        "angle": 0,
         "stops": [
           {
             "offset": 0,
-            "color": "#fff1bf"
+            "color": "#b8862a"
           },
           {
             "offset": 0.5,
-            "color": "#e3b04b"
+            "color": "#f6dc8a"
           },
           {
             "offset": 1,
-            "color": "#a8761f"
+            "color": "#b8862a"
           }
         ]
       }
@@ -108,38 +96,48 @@
       "label": "紅組の出場者",
       "type": "list",
       "default": [
+        "*ガールズ・ネオン",
         "山田はなこ",
+        "*湯けむり三姉妹",
         "スターダスト・ガールズ",
         "演歌の星 さくら",
         "ミラクル☆シスターズ",
-        "湯けむり三姉妹",
-        "DJ ももか"
+        "DJ ももか",
+        "北の大地 はなこ",
+        "*桜坂ジェネ子",
+        "ムーンライト姉妹"
       ],
-      "maxItems": 12,
+      "maxItems": 22,
       "maxLength": 20,
-      "placeholder": "出場者名"
+      "placeholder": "出場者名",
+      "help": "先頭に「*」を付けると初出場マークが付きます（最大22組）"
     },
     {
       "id": "white",
       "label": "白組の出場者",
       "type": "list",
       "default": [
+        "*ネオンボーイズ",
         "佐藤たろう",
-        "ネオンボーイズ",
-        "北の大地 じろう",
+        "*サンダーブラザーズ",
         "ロックンロール部長",
-        "サンダーブラザーズ",
-        "MC まさる"
+        "北の大地 じろう",
+        "MC まさる",
+        "*湘南ウェーブ",
+        "演歌の星 じろう",
+        "ジェネレーターズ",
+        "港町ブルース男"
       ],
-      "maxItems": 12,
+      "maxItems": 22,
       "maxLength": 20,
-      "placeholder": "出場者名"
+      "placeholder": "出場者名",
+      "help": "先頭に「*」を付けると初出場マークが付きます（最大22組）"
     },
     {
       "id": "note",
-      "label": "放送日などの補足",
+      "label": "補足（放送日など）",
       "type": "text",
-      "default": "12月31日（木）よる7時20分から",
+      "default": "12月31日（木）よる7時20分から放送",
       "maxLength": 30
     }
   ],
@@ -155,65 +153,49 @@
     {
       "type": "path",
       "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
-      "x": 90,
-      "y": 70,
-      "scale": 1.2,
+      "x": 80,
+      "y": 60,
+      "scale": 1,
       "fill": "#f3d27a"
     },
     {
       "type": "path",
       "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
-      "x": 990,
-      "y": 110,
-      "scale": 1.6,
+      "x": 1000,
+      "y": 70,
+      "scale": 1.3,
       "fill": "#f3d27a"
     },
     {
       "type": "path",
       "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
       "x": 960,
-      "y": 300,
-      "scale": 0.8,
+      "y": 190,
+      "scale": 0.6,
       "fill": "#f3d27a"
     },
     {
       "type": "path",
       "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
-      "x": 130,
-      "y": 300,
-      "scale": 0.9,
-      "fill": "#f3d27a"
-    },
-    {
-      "type": "path",
-      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
-      "x": 60,
+      "x": 120,
       "y": 200,
-      "scale": 0.6,
-      "fill": "#f3d27a"
-    },
-    {
-      "type": "path",
-      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
-      "x": 1030,
-      "y": 220,
-      "scale": 0.6,
-      "fill": "#f3d27a"
-    },
-    {
-      "type": "path",
-      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
-      "x": 800,
-      "y": 40,
       "scale": 0.7,
       "fill": "#f3d27a"
     },
     {
       "type": "path",
       "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
-      "x": 270,
+      "x": 300,
       "y": 40,
-      "scale": 0.8,
+      "scale": 0.6,
+      "fill": "#f3d27a"
+    },
+    {
+      "type": "path",
+      "d": "M0,-20C2,-4 4,-2 20,0C4,2 2,4 0,20C-2,4 -4,2 -20,0C-4,-2 -2,-4 0,-20Z",
+      "x": 780,
+      "y": 40,
+      "scale": 0.7,
       "fill": "#f3d27a"
     },
     {
@@ -222,269 +204,277 @@
       "prefix": "第",
       "suffix": "回",
       "x": 540,
-      "y": 86,
-      "fontSize": 44,
-      "maxWidth": 600,
+      "y": 70,
+      "fontSize": 40,
+      "maxWidth": 500,
+      "maxLines": 1,
       "textAnchor": "middle",
       "fontFamily": "mincho",
       "fontWeight": 800,
-      "fill": "gradient:gold",
+      "fill": "#f6dc8a",
       "letterSpacing": 0.25
     },
     {
       "type": "field",
       "field": "show",
       "x": 540,
-      "y": 186,
-      "fontSize": 132,
-      "minFontSize": 60,
+      "y": 156,
+      "fontSize": 112,
+      "minFontSize": 56,
       "maxWidth": 960,
+      "maxLines": 1,
       "textAnchor": "middle",
       "fontFamily": "mincho",
       "fontWeight": 800,
       "fill": "#ffffff",
       "letterSpacing": 0.06,
       "shadow": {
-        "dy": 6,
-        "blur": 10,
-        "color": "#000",
+        "dy": 5,
+        "blur": 8,
         "opacity": 0.5
       }
     },
     {
-      "type": "group",
+      "type": "rect",
+      "x": 180,
+      "y": 222,
+      "width": 720,
+      "height": 62,
+      "fill": "gradient:gold"
+    },
+    {
+      "type": "text",
+      "text": "出 場 歌 手 決 定",
       "x": 540,
-      "y": 290,
-      "children": [
-        {
-          "type": "path",
-          "d": "M-300,-34L300,-34L280,0L300,34L-300,34L-280,0Z",
-          "fill": "gradient:gold"
-        },
-        {
-          "type": "text",
-          "text": "出場者決定！",
-          "x": 0,
-          "y": 1,
-          "fontSize": 46,
-          "textAnchor": "middle",
-          "fontFamily": "sans",
-          "fontWeight": 900,
-          "fill": "#3a1c00",
-          "letterSpacing": 0.2
-        }
-      ]
+      "y": 254,
+      "fontSize": 40,
+      "textAnchor": "middle",
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "#2a1600",
+      "letterSpacing": 0.1
     },
     {
       "type": "rect",
-      "x": 44,
-      "y": 366,
-      "width": 486,
-      "height": 860,
-      "rx": 26,
-      "fill": "gradient:red",
-      "stroke": "gradient:gold",
-      "strokeWidth": 4
+      "x": 40,
+      "y": 310,
+      "width": 492,
+      "height": 932,
+      "fill": "gradient:red"
     },
     {
-      "type": "circle",
-      "x": 287,
-      "y": 436,
-      "r": 52,
-      "fill": "#ffffff"
+      "type": "rect",
+      "x": 40,
+      "y": 310,
+      "width": 492,
+      "height": 74,
+      "fill": "#7d0718"
     },
     {
       "type": "text",
-      "text": "紅",
-      "x": 287,
-      "y": 436,
-      "fontSize": 64,
+      "text": "紅組",
+      "x": 286,
+      "y": 348,
+      "fontSize": 50,
       "textAnchor": "middle",
-      "fontFamily": "brush",
-      "fill": "#c8102e"
-    },
-    {
-      "type": "text",
-      "text": "組",
-      "x": 368,
-      "y": 446,
-      "fontSize": 40,
-      "textAnchor": "start",
-      "fontFamily": "mincho",
-      "fontWeight": 800,
-      "fill": "#ffffff"
-    },
-    {
-      "type": "line",
-      "x": 80,
-      "y": 508,
-      "x2": 494,
-      "y2": 508,
-      "stroke": "#ffd6dc",
-      "strokeWidth": 2,
-      "opacity": 0.7
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "#ffffff",
+      "letterSpacing": 0.4
     },
     {
       "type": "list",
       "field": "red",
-      "x": 64,
-      "y": 520,
-      "width": 446,
-      "height": 690,
-      "maxItemHeight": 96,
+      "x": 52,
+      "y": 396,
+      "width": 468,
+      "height": 834,
+      "maxItemHeight": 62,
       "item": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "width": "100%",
+          "height": "100%",
+          "fill": "#ffffff",
+          "opacity": 0.08,
+          "byIndex": {
+            "even": {
+              "opacity": 0
+            }
+          }
+        },
+        {
+          "type": "circle",
+          "x": 26,
+          "y": "50%",
+          "r": 15,
+          "fill": "#ffffff",
+          "if": "itemFlag"
+        },
+        {
+          "type": "text",
+          "text": "初",
+          "x": 26,
+          "y": "50%",
+          "fontSize": 18,
+          "textAnchor": "middle",
+          "fontFamily": "sans",
+          "fontWeight": 900,
+          "fill": "#c8102e",
+          "if": "itemFlag"
+        },
         {
           "type": "text",
           "text": "{item}",
-          "x": "50%",
+          "x": 54,
           "y": "50%",
-          "fontSize": 46,
-          "minFontSize": 20,
-          "maxWidth": "100%-24",
-          "maxHeight": "82%",
+          "fontSize": 34,
+          "minFontSize": 16,
+          "maxWidth": "100%-64",
+          "maxHeight": "86%",
           "maxLines": 1,
-          "textAnchor": "middle",
-          "fontFamily": "mincho",
-          "fontWeight": 800,
+          "fontFamily": "sans",
+          "fontWeight": 700,
           "fill": "#ffffff"
-        },
-        {
-          "type": "line",
-          "x": "6%",
-          "y": "100%",
-          "x2": "94%",
-          "y2": "100%",
-          "stroke": "#ffc2cc",
-          "strokeWidth": 1.5,
-          "strokeDasharray": "2 6",
-          "strokeLinecap": "round"
         }
       ]
     },
     {
       "type": "rect",
-      "x": 550,
-      "y": 366,
-      "width": 486,
-      "height": 860,
-      "rx": 26,
-      "fill": "gradient:white",
-      "stroke": "gradient:gold",
-      "strokeWidth": 4
-    },
-    {
-      "type": "circle",
-      "x": 793,
-      "y": 436,
-      "r": 52,
-      "fill": "#1b2563"
-    },
-    {
-      "type": "text",
-      "text": "白",
-      "x": 793,
-      "y": 436,
-      "fontSize": 64,
-      "textAnchor": "middle",
-      "fontFamily": "brush",
+      "x": 548,
+      "y": 310,
+      "width": 492,
+      "height": 932,
       "fill": "#ffffff"
     },
     {
-      "type": "text",
-      "text": "組",
-      "x": 874,
-      "y": 446,
-      "fontSize": 40,
-      "textAnchor": "start",
-      "fontFamily": "mincho",
-      "fontWeight": 800,
-      "fill": "#1b2563"
+      "type": "rect",
+      "x": 548,
+      "y": 310,
+      "width": 492,
+      "height": 74,
+      "fill": "#e9ebf3"
     },
     {
-      "type": "line",
-      "x": 586,
-      "y": 508,
-      "x2": 1000,
-      "y2": 508,
-      "stroke": "#1b2563",
-      "strokeWidth": 2,
-      "opacity": 0.25
+      "type": "rect",
+      "x": 548,
+      "y": 380,
+      "width": 492,
+      "height": 4,
+      "fill": "#13183f"
+    },
+    {
+      "type": "text",
+      "text": "白組",
+      "x": 794,
+      "y": 348,
+      "fontSize": 50,
+      "textAnchor": "middle",
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "#13183f",
+      "letterSpacing": 0.4
     },
     {
       "type": "list",
       "field": "white",
-      "x": 570,
-      "y": 520,
-      "width": 446,
-      "height": 690,
-      "maxItemHeight": 96,
+      "x": 560,
+      "y": 396,
+      "width": 468,
+      "height": 834,
+      "maxItemHeight": 62,
       "item": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "width": "100%",
+          "height": "100%",
+          "fill": "#1b2a6b",
+          "opacity": 0.05,
+          "byIndex": {
+            "even": {
+              "opacity": 0
+            }
+          }
+        },
+        {
+          "type": "circle",
+          "x": 26,
+          "y": "50%",
+          "r": 15,
+          "fill": "#c8102e",
+          "if": "itemFlag"
+        },
+        {
+          "type": "text",
+          "text": "初",
+          "x": 26,
+          "y": "50%",
+          "fontSize": 18,
+          "textAnchor": "middle",
+          "fontFamily": "sans",
+          "fontWeight": 900,
+          "fill": "#ffffff",
+          "if": "itemFlag"
+        },
         {
           "type": "text",
           "text": "{item}",
-          "x": "50%",
+          "x": 54,
           "y": "50%",
-          "fontSize": 46,
-          "minFontSize": 20,
-          "maxWidth": "100%-24",
-          "maxHeight": "82%",
+          "fontSize": 34,
+          "minFontSize": 16,
+          "maxWidth": "100%-64",
+          "maxHeight": "86%",
           "maxLines": 1,
-          "textAnchor": "middle",
-          "fontFamily": "mincho",
-          "fontWeight": 800,
-          "fill": "#14194a"
-        },
-        {
-          "type": "line",
-          "x": "6%",
-          "y": "100%",
-          "x2": "94%",
-          "y2": "100%",
-          "stroke": "#9aa0c4",
-          "strokeWidth": 1.5,
-          "strokeDasharray": "2 6",
-          "strokeLinecap": "round"
+          "fontFamily": "sans",
+          "fontWeight": 700,
+          "fill": "#13183f"
         }
       ]
     },
     {
       "type": "circle",
-      "x": 540,
-      "y": 796,
-      "r": 40,
-      "fill": "#0b0f2e",
-      "stroke": "gradient:gold",
-      "strokeWidth": 4
+      "x": 58,
+      "y": 1282,
+      "r": 15,
+      "fill": "#c8102e",
+      "stroke": "#ffffff",
+      "strokeWidth": 2
     },
     {
       "type": "text",
-      "text": "VS",
-      "x": 540,
-      "y": 796,
-      "fontSize": 30,
+      "text": "初",
+      "x": 58,
+      "y": 1282,
+      "fontSize": 18,
       "textAnchor": "middle",
-      "fontFamily": "heavy",
-      "fill": "gradient:gold"
+      "fontFamily": "sans",
+      "fontWeight": 900,
+      "fill": "#ffffff"
     },
     {
-      "type": "line",
-      "x": 160,
+      "type": "text",
+      "text": "＝初出場",
+      "x": 82,
       "y": 1282,
-      "x2": 920,
-      "y2": 1282,
-      "stroke": "gradient:gold",
-      "strokeWidth": 1,
-      "opacity": 0.6,
-      "if": "note"
+      "fontSize": 26,
+      "fontFamily": "sans",
+      "fontWeight": 700,
+      "fill": "#ffffff"
     },
     {
       "type": "field",
       "field": "note",
-      "x": 540,
+      "x": 1040,
       "y": 1282,
-      "fontSize": 36,
-      "maxWidth": 900,
-      "textAnchor": "middle",
+      "fontSize": 30,
+      "maxWidth": 780,
+      "maxLines": 1,
+      "textAnchor": "end",
       "fontFamily": "sans",
       "fontWeight": 700,
       "fill": "#ffffff"
@@ -492,6 +482,6 @@
   ],
   "share": {
     "hashtags": ["紅白予想", "発表ジェネレーター"],
-    "text": "第{edition}回「{show}」出場者を発表します！"
+    "text": "第{edition}回「{show}」出場歌手を発表します！"
   }
 }
