@@ -79,6 +79,8 @@ scripts/
 - `fields`: 入力フォーム定義。`text` `textarea` `number` `select` `date` `list` `image` に対応。`label` `placeholder` `default` `required` `maxLength` `minLength` `min` `max` `options` `maxItems` `help` を指定可能
 - `elements`: 描画要素。`text` `field` `rect` `circle` `ellipse` `line` `path` `image` `group` `list` `pattern`
 - `share`: 投稿文（`{fieldId}` で入力値を差し込み）とハッシュタグ
+- `samples`: 入力例（`title` と `values`）。編集画面の「🎲 おまかせで入力」と、ページ下部の「作例・ネタ帳」（入力済みで開くリンク）に使われます
+- `faq`: テンプレート固有のよくある質問（`q` / `a`）。共通の質問と合わせて表示し、FAQPage 構造化データにも出力します
 
 ### 描画要素の主なプロパティ
 
@@ -90,11 +92,19 @@ scripts/
 - `text` 要素では `{fieldId}`、`{date:YYYY年M月D日}` のような書式付き差し込みが可能
 - `list` 要素は list フィールドの各項目を `item` の要素で繰り返し描画し、`{item}` `{index}` と `byIndex`（順位ごとの上書き）が使えます
 
+## 作品リンク（拡散のしくみ）
+
+投稿文の URL は、入力内容を `?v=`（JSON → base64url）に埋め込んだ「作品リンク」になります（`src/lib/remix.ts`）。リンクを開いた人には同じ画像がプレビューされ、「自分版」をそのまま作れます。サーバー側の保存は不要で、画像フィールド（写真）はリンクに含めません。canonical は常に `/create/<id>/` のままです。
+
+## SEO
+
+テンプレートページには、説明・作り方・作例・よくある質問・関連テンプレートを静的 HTML として出力し、WebApplication / HowTo / FAQPage / BreadcrumbList の構造化データを付けています（`src/lib/seo-content.ts`、`src/components/TemplateGuide.tsx`）。
+
 ## アクセス解析
 
 `NEXT_PUBLIC_GA_ID` を設定すると GA4 を読み込みます。GTM などで `dataLayer` が用意されている場合はそちらに送信します。
 
-送信イベント: `template_view` `template_select` `image_generate` `image_download` `share_click` `copy_image` `share_text_copy`（いずれも `template_id` パラメータ付き）
+送信イベント: `template_view` `template_select` `image_generate` `image_download` `share_click` `copy_image` `share_text_copy` `remix_open` `remix_link_copy` `sample_apply`（いずれも `template_id` パラメータ付き）
 
 ## 環境変数
 

@@ -259,6 +259,52 @@ export function validateTemplate(
     problems.push("share.text は必須です")
   }
 
+  if (raw.samples !== undefined) {
+    if (!Array.isArray(raw.samples)) {
+      problems.push("samples は配列である必要があります")
+    } else {
+      raw.samples.forEach((sample, i) => {
+        const where = `samples[${i}]`
+        if (!isObject(sample) || typeof sample.title !== "string") {
+          problems.push(`${where}.title は必須です`)
+          return
+        }
+        if (!isObject(sample.values)) {
+          problems.push(`${where}.values はオブジェクトである必要があります`)
+          return
+        }
+        for (const [key, value] of Object.entries(sample.values)) {
+          const field = fields.get(key)
+          if (!field) {
+            problems.push(`${where}.values.${key} は存在しないフィールドです`)
+          } else if (field.type === "image") {
+            problems.push(`${where}.values.${key} に画像は指定できません`)
+          } else if (field.type === "list" && !Array.isArray(value)) {
+            problems.push(`${where}.values.${key} は配列で指定してください`)
+          } else if (
+            field.type === "select" &&
+            !field.options?.some((o) => o.value === String(value))
+          ) {
+            problems.push(
+              `${where}.values.${key} は options にない値です（${String(value)}）`
+            )
+          }
+        }
+      })
+    }
+  }
+  if (raw.faq !== undefined) {
+    if (
+      !Array.isArray(raw.faq) ||
+      raw.faq.some(
+        (f) =>
+          !isObject(f) || typeof f.q !== "string" || typeof f.a !== "string"
+      )
+    ) {
+      problems.push("faq は { q, a } の配列で指定してください")
+    }
+  }
+
   if (problems.length > 0) throw new TemplateValidationError(id, problems)
   return raw as unknown as TemplateDefinition
 }

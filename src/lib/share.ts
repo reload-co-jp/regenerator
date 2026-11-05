@@ -1,4 +1,5 @@
 import type { FieldValues, TemplateDefinition } from "@/types/template"
+import { remixUrl } from "./remix"
 import { absoluteUrl } from "./site"
 import { interpolateValues } from "./template-values"
 
@@ -19,7 +20,8 @@ export function buildShareContent(
   return {
     text: interpolateValues(template.share.text, template, values).trim(),
     hashtags: (template.share.hashtags ?? []).map((h) => h.replace(/^#/, "")),
-    url: templateUrl(template.id),
+    // 入力内容入りの作品リンク。開いた人が同じ画像を見て、そのまま自分版を作れる
+    url: remixUrl(templateUrl(template.id), template, values),
   }
 }
 
