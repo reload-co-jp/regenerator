@@ -9,8 +9,7 @@ export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
 /** サービスの公開URL（末尾スラッシュなし） */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://reload-co-jp.github.io" + BASE_PATH
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://gen.reload.co.jp"
 ).replace(/\/$/, "")
 
 /** public 以下のファイルへのパス（basePath を考慮） */
