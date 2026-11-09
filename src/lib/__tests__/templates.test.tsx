@@ -101,7 +101,7 @@ describe("template definitions", () => {
       })
 
       it("uses a supported output size", () => {
-        expect([`1200x630`, `1080x1080`, `1080x1350`]).toContain(
+        expect([`1200x630`, `1200x900`, `1080x1080`, `1080x1350`]).toContain(
           `${template.canvas.width}x${template.canvas.height}`
         )
       })
