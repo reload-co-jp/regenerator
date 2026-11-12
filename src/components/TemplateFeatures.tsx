@@ -183,7 +183,7 @@ const Visual = styled(Link)<{ $portrait: boolean; $reverse: boolean }>`
   ${(p) =>
     p.$portrait &&
     css`
-      max-width: 460px;
+      max-width: var(--visual-max, 460px);
       width: 100%;
       justify-self: center;
     `}
@@ -357,7 +357,8 @@ export function TemplateFeatures({ items }: { items: FeatureItem[] }) {
       <div id="features">
         {items.map(({ template, category, samples }, i) => {
           const { width, height, background } = template.canvas
-          const portrait = height > width
+          // 横長でも 4:3 程度までは画像と文章を横並びにする
+          const portrait = width / height < 1.5
           const reverse = i % 2 === 1
           const href = `/create/${template.id}/`
           const select = () =>
@@ -376,6 +377,10 @@ export function TemplateFeatures({ items }: { items: FeatureItem[] }) {
                   <Visual
                     href={href}
                     onClick={select}
+                    style={{
+                      ["--visual-max" as string]:
+                        height > width ? "460px" : "600px",
+                    }}
                     tabIndex={-1}
                     aria-hidden="true"
                     $portrait={portrait}
@@ -450,7 +455,7 @@ export function TemplateFeatures({ items }: { items: FeatureItem[] }) {
                       </Cta>
                       <Spec>
                         {width}×{height}px ・{" "}
-                        {portrait
+                        {height > width
                           ? "縦長"
                           : width === height
                             ? "正方形"
